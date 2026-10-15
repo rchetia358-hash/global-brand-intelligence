@@ -1,0 +1,128 @@
+{
+  "_meta": {
+    "description": "RSS feed configuration for Global Brand Intelligence. Add new feeds here.",
+    "categories": ["headlines", "corporate", "investment", "marketing", "expansion", "financial", "executive"]
+  },
+  "feeds": [
+    {
+      "id": "ft-companies",
+      "name": "Financial Times — Companies",
+      "url": "https://www.ft.com/rss/home/uk",
+      "category": "headlines",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "id": "bbc-business",
+      "name": "BBC News — Business",
+      "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "category": "headlines",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "id": "bloomberg-markets",
+      "name": "Bloomberg — Markets",
+      "url": "https://feeds.bloomberg.com/markets/news.rss",
+      "category": "financial",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "id": "wsj-business",
+      "name": "Wall Street Journal — Business",
+      "url": "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml",
+      "category": "headlines",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "id": "cnbc-business",
+      "name": "CNBC — Business",
+      "url": "https://www.cnbc.com/id/10001147/device/rss/rss.html",
+      "category": "financial",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "guardian-business",
+      "name": "The Guardian — Business",
+      "url": "https://www.theguardian.com/uk/business/rss",
+      "category": "corporate",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "techcrunch",
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/feed/",
+      "category": "investment",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "wwd",
+      "name": "WWD — Fashion Business",
+      "url": "https://wwd.com/feed/",
+      "category": "marketing",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "business-insider",
+      "name": "Business Insider",
+      "url": "https://feeds.businessinsider.com/custom/all",
+      "category": "corporate",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "theverge",
+      "name": "The Verge — Tech & Business",
+      "url": "https://www.theverge.com/rss/index.xml",
+      "category": "investment",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "marketwatch",
+      "name": "MarketWatch — Top Stories",
+      "url": "https://feeds.marketwatch.com/marketwatch/topstories/",
+      "category": "financial",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "forbes-business",
+      "name": "Forbes — Business",
+      "url": "https://www.forbes.com/business/feed/",
+      "category": "executive",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "economist-business",
+      "name": "The Economist — Business",
+      "url": "https://www.economist.com/business/rss.xml",
+      "category": "corporate",
+      "priority": 1,
+      "enabled": true
+    },
+    {
+      "id": "retail-dive",
+      "name": "Retail Dive",
+      "url": "https://www.retaildive.com/feeds/news/",
+      "category": "expansion",
+      "priority": 2,
+      "enabled": true
+    },
+    {
+      "id": "beauty-inc",
+      "name": "Beauty Inc / WWD Beauty",
+      "url": "https://wwd.com/beauty-industry-news/feed/",
+      "category": "marketing",
+      "priority": 2,
+      "enabled": true
+    }
+  ]
+}

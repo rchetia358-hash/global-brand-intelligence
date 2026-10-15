@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Brand Intelligence</title>
+  <meta name="description" content="Inside the investments, technology and strategies shaping the world's leading brands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to brand headlines</a>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MASTHEAD
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="masthead" role="banner">
+    <div class="masthead__inner">
+      <div class="masthead__meta">
+        <span id="pub-date" class="masthead__date"></span>
+        <span class="masthead__separator">·</span>
+        <span class="masthead__edition">Global Edition</span>
+      </div>
+
+      <div class="masthead__title-block">
+        <div class="masthead__rule-top"></div>
+        <h1 class="masthead__title">Global Brand Intelligence</h1>
+        <p class="masthead__tagline">Inside the investments, technology and strategies shaping the world's leading brands</p>
+        <div class="masthead__rule-bottom"></div>
+      </div>
+
+      <div class="masthead__controls">
+        <div class="masthead__status">
+          <span id="status-dot" class="status-dot status-dot--loading"></span>
+          <span id="status-text" class="masthead__status-text">Loading…</span>
+        </div>
+        <button id="refresh-btn" class="btn btn--ghost btn--sm" aria-label="Refresh news">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════════════════════ -->
+  <nav class="nav-bar" role="navigation" aria-label="Main navigation">
+    <div class="nav-bar__inner">
+      <ul class="nav-bar__sections" role="list">
+        <li><a href="#" class="nav-link nav-link--active" data-view="home" data-section="headlines" aria-current="page">Today's Global Brand Headlines</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="corporate">Corporate</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="investment">Investment &amp; Tech</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="marketing">Marketing</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="expansion">Expansion</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="financial">Financial Results</a></li>
+        <li><a href="#" class="nav-link" data-view="home" data-section="executive">Executive Insights</a></li>
+        <li><a href="#" class="nav-link" data-view="brands">Brand Directory</a></li>
+      </ul>
+
+      <form class="search-form" role="search" id="search-form">
+        <label for="search-input" class="sr-only">Search brands, companies and topics</label>
+        <input
+          id="search-input"
+          type="search"
+          class="search-form__input"
+          placeholder="Search brands, companies, topics…"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button type="submit" class="search-form__btn" aria-label="Submit search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════════════════ -->
+  <main class="main-content" id="main-content">
+
+    <!-- HOME VIEW -->
+    <div id="view-home" class="view view--home">
+      <!-- Section header -->
+      <div class="section-header" id="section-header">
+        <h2 class="section-header__title" id="section-title">Today's Global Brand Headlines</h2>
+        <p class="section-header__sub" id="section-sub"></p>
+      </div>
+
+      <!-- Building visualisation: click a logo to see that brand's news from the last three hours -->
+      <section id="city-visual" class="city-visual" aria-label="Interactive fashion city: select a brand logo to read its latest news">
+        <div class="city-visual__stage" id="city-stage">
+          <img class="city-visual__img" id="city-img" src="/images/fashion-city.jpg" width="1024" height="680"
+               alt="City street lined with skyscrapers covered in fashion brand advertisements including H&amp;M, ZARA, UNIQLO, Nike, adidas, MANGO, COS, Pull&amp;Bear, Bershka, Massimo Dutti, Stradivarius and The North Face." />
+          <svg class="city-visual__hotspots" id="city-hotspots" viewBox="0 0 1024 680" preserveAspectRatio="none" role="group" aria-label="Brand logos in the image. Each is a button that opens that brand's news."></svg>
+          <div class="city-visual__tooltip" id="city-tooltip" role="tooltip" hidden></div>
+        </div>
+        <p class="city-visual__hint">Select a brand logo on the buildings to read its news from the last three hours.</p>
+
+        <!-- Brand news results (own loading / error / empty states; the image above always stays visible) -->
+        <div class="brand-news" id="brand-news" tabindex="-1" hidden>
+          <div class="brand-news__head">
+            <div>
+              <p class="brand-news__kicker" id="brand-news-kicker">Brand news · last 3 hours</p>
+              <h3 class="brand-news__title" id="brand-news-title"></h3>
+            </div>
+            <div class="brand-news__actions">
+              <button type="button" class="btn btn--ghost btn--sm" id="brand-news-refresh">Refresh</button>
+              <button type="button" class="btn btn--primary btn--sm" id="brand-news-back">← Back to the city</button>
+            </div>
+          </div>
+          <div class="brand-news__body" id="brand-news-body" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- Official Brand Wire — visual press releases showcase -->
+      <section id="press-releases-section" class="press-releases-section" hidden aria-label="Official Brand Wire">
+        <div class="press-releases-section__header">
+          <div>
+            <h2 class="press-releases-section__title">Official Brand Wire</h2>
+            <p class="press-releases-section__sub">Direct dispatches from corporate newsrooms and brand media portals.</p>
+          </div>
+          <span class="press-releases-section__badge">Verified Sources</span>
+        </div>
+        <div id="press-releases-grid" class="press-releases-grid"></div>
+      </section>
+
+      <!-- Live articles from RSS feeds: status panels for this feed -->
+      <div id="state-loading" class="state-panel state-panel--loading" role="status" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="state-panel__msg">Fetching the latest brand intelligence from live feeds…</p>
+      </div>
+
+      <div id="state-error" class="state-panel state-panel--error" role="alert" aria-live="assertive" hidden>
+        <svg class="state-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <p class="state-panel__msg" id="error-msg">Unable to load news. Please check your connection and try again.</p>
+        <button class="btn btn--primary" id="error-retry-btn">Try again</button>
+      </div>
+
+      <div id="state-empty" class="state-panel state-panel--empty" hidden>
+        <svg class="state-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+        <p class="state-panel__msg">No articles found matching this selection.</p>
+      </div>
+
+      <div id="stale-banner" class="stale-banner" hidden role="status">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Showing data from a previous fetch — <button class="stale-banner__link" id="stale-refresh-btn">refresh now</button>
+      </div>
+
+      <!-- Live articles from RSS feeds (image first, then text) -->
+      <div id="articles-container" class="articles-container" hidden></div>
+
+      <!-- Industry Filter (moved: sits directly above the written news links) -->
+      <div class="filter-bar" id="filter-bar" hidden>
+        <div class="filter-bar__inner">
+          <div class="filter-bar__group">
+            <label class="filter-bar__label" for="filter-industry">Industry</label>
+            <select id="filter-industry" class="filter-bar__select">
+              <option value="">All industries</option>
+            </select>
+          </div>
+          <div class="filter-bar__group">
+            <label class="filter-bar__label" for="filter-country">Country</label>
+            <select id="filter-country" class="filter-bar__select">
+              <option value="">All countries</option>
+            </select>
+          </div>
+          <div class="filter-bar__group">
+            <label class="filter-bar__label" for="filter-date">Date</label>
+            <select id="filter-date" class="filter-bar__select">
+              <option value="">Any time</option>
+              <option value="24h">Last 24 hours</option>
+              <option value="48h">Last 48 hours</option>
+              <option value="7d">Last 7 days</option>
+              <option value="30d">Last 30 days</option>
+            </select>
+          </div>
+          <button id="filter-clear" class="btn btn--ghost btn--sm">Clear filters</button>
+          <span class="filter-bar__count" id="filter-count"></span>
+        </div>
+      </div>
+
+      <!-- Written news links -->
+      <div id="articles-list-container" class="articles-list-container" hidden></div>
+
+      <!-- Fast Filter (moved: sits directly below the written news links) -->
+      <div class="brand-pills-bar" id="brand-pills-bar" role="toolbar" aria-label="Brand quick filters">
+        <span class="brand-pills-label">Fast Filter:</span>
+        <button class="brand-pill brand-pill--active" data-brand-filter="">All Brands</button>
+        <button class="brand-pill" data-brand-filter="Apple">Apple</button>
+        <button class="brand-pill" data-brand-filter="Tesla">Tesla</button>
+        <button class="brand-pill" data-brand-filter="Zara / Inditex">Zara</button>
+        <button class="brand-pill" data-brand-filter="Nvidia">Nvidia</button>
+        <button class="brand-pill" data-brand-filter="Chanel">Chanel</button>
+        <button class="brand-pill" data-brand-filter="Starbucks">Starbucks</button>
+        <button class="brand-pill" data-brand-filter="Coca-Cola">Coca-Cola</button>
+        <button class="brand-pill" data-brand-filter="Mercedes-Benz">Mercedes-Benz</button>
+        <button class="brand-pill" data-brand-filter="McDonald's">McDonald's</button>
+        <button class="brand-pill" data-brand-filter="Estée Lauder">Estée Lauder</button>
+        <button class="brand-pill" data-brand-filter="H&amp;M Group">H&amp;M</button>
+      </div>
+    </div>
+
+
+    <!-- BRAND DIRECTORY VIEW -->
+    <div id="view-brands" class="view view--brands" hidden>
+      <div class="section-header">
+        <h2 class="section-header__title">Brand Directory</h2>
+        <p class="section-header__sub">Explore tracked brands by industry and parent company. Click any brand to view coverage and profile details.</p>
+      </div>
+      <div id="brand-directory" class="brand-directory"></div>
+    </div>
+
+    <!-- BRAND PROFILE VIEW -->
+    <div id="view-brand-profile" class="view view--brand-profile" hidden>
+      <div class="brand-profile" id="brand-profile-content"></div>
+    </div>
+
+    <!-- SEARCH RESULTS VIEW -->
+    <div id="view-search" class="view view--search" hidden>
+      <div class="section-header">
+        <h2 class="section-header__title">Search Results</h2>
+        <p class="section-header__sub" id="search-results-sub"></p>
+      </div>
+      <div id="search-results-container" class="articles-container"></div>
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p class="site-footer__name">Global Brand Intelligence</p>
+      <p class="site-footer__disclaimer">
+        All articles link to original sources. Global Brand Intelligence aggregates publicly available news from verified financial and business feeds.
+        It does not fabricate headlines, publication dates, links or financial figures.
+        <span id="footer-fetch-time"></span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/js/baseline-articles.js"></script>
+  <script src="/js/app.js"></script>
+  <script src="/js/city.js"></script>
+</body>
+</html>

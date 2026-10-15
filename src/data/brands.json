@@ -1,0 +1,797 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "Global Brand Intelligence — editable brand directory. Add brands here; no application code changes required.",
+    "lastUpdated": "2026-10-14"
+  },
+  "industries": [
+    {
+      "id": "fashion-luxury",
+      "label": "Fashion & Luxury",
+      "icon": "👜",
+      "brands": [
+        {
+          "id": "lvmh",
+          "name": "LVMH",
+          "parent": "LVMH Moët Hennessy Louis Vuitton",
+          "country": "France",
+          "ticker": "MC.PA",
+          "website": "https://www.lvmh.com",
+          "searchTerms": [
+            "LVMH",
+            "Louis Vuitton",
+            "Dior",
+            "Givenchy",
+            "Bulgari",
+            "Fendi",
+            "Moët",
+            "Hennessy",
+            "Arnault",
+            "Tiffany & Co",
+            "Tiffany"
+          ]
+        },
+        {
+          "id": "gucci",
+          "name": "Gucci",
+          "parent": "Kering",
+          "country": "France/Italy",
+          "ticker": "KER.PA",
+          "website": "https://www.gucci.com",
+          "searchTerms": [
+            "Gucci",
+            "Kering",
+            "Saint Laurent",
+            "Balenciaga",
+            "Bottega Veneta",
+            "Pinault"
+          ]
+        },
+        {
+          "id": "chanel",
+          "name": "Chanel",
+          "parent": "Chanel S.A.",
+          "country": "France",
+          "ticker": null,
+          "website": "https://www.chanel.com",
+          "searchTerms": [
+            "Chanel",
+            "Wertheimer"
+          ]
+        },
+        {
+          "id": "hermes",
+          "name": "Hermès",
+          "parent": "Hermès International",
+          "country": "France",
+          "ticker": "RMS.PA",
+          "website": "https://www.hermes.com",
+          "searchTerms": [
+            "Hermès",
+            "Hermes",
+            "Birkin",
+            "Kelly bag"
+          ]
+        },
+        {
+          "id": "prada",
+          "name": "Prada",
+          "parent": "Prada Group",
+          "country": "Italy",
+          "ticker": "1913.HK",
+          "website": "https://www.prada.com",
+          "searchTerms": [
+            "Prada",
+            "Miu Miu",
+            "Patrizio Bertelli"
+          ]
+        },
+        {
+          "id": "richemont",
+          "name": "Richemont",
+          "parent": "Compagnie Financière Richemont",
+          "country": "Switzerland",
+          "ticker": "CFR.SW",
+          "website": "https://www.richemont.com",
+          "searchTerms": [
+            "Richemont",
+            "Cartier",
+            "IWC",
+            "Van Cleef",
+            "Montblanc"
+          ]
+        },
+        {
+          "id": "zara",
+          "name": "Zara / Inditex",
+          "parent": "Inditex",
+          "country": "Spain",
+          "ticker": "ITX.MC",
+          "website": "https://www.inditex.com",
+          "searchTerms": [
+            "Zara",
+            "Inditex",
+            "Massimo Dutti",
+            "Pull&Bear",
+            "Bershka",
+            "Marta Ortega",
+            "Amancio Ortega"
+          ],
+          "newsTerms": [
+            "Zara",
+            "Inditex"
+          ],
+          "newsQuery": "Zara OR Inditex",
+          "officialDomains": [
+            "inditex.com",
+            "zara.com"
+          ],
+          "newsExclude": [
+            "Zara Larsson",
+            "Zara Tindall",
+            "Zara Phillips",
+            "Zara McDermott",
+            "Zara Rutherford",
+            "Zara Holland",
+            "Zara Dar",
+            "Zara Hussain",
+            "Zara Anne"
+          ]
+        },
+        {
+          "id": "hm",
+          "name": "H&M Group",
+          "parent": "Hennes & Mauritz",
+          "country": "Sweden",
+          "ticker": "HM-B.ST",
+          "website": "https://hmgroup.com",
+          "searchTerms": [
+            "H&M",
+            "H&M Group",
+            "COS",
+            "& Other Stories",
+            "Arket",
+            "Monki"
+          ],
+          "newsTerms": [
+            "H&M",
+            "H&M Group",
+            "Hennes & Mauritz"
+          ],
+          "newsQuery": "\"H&M\" OR \"H&M Group\"",
+          "officialDomains": [
+            "hmgroup.com",
+            "about.hm.com",
+            "hm.com"
+          ]
+        },
+        {
+          "id": "nike",
+          "name": "Nike",
+          "parent": "Nike Inc.",
+          "country": "USA",
+          "ticker": "NKE",
+          "website": "https://www.nike.com",
+          "searchTerms": [
+            "Nike",
+            "Jordan Brand",
+            "Converse",
+            "Swoosh",
+            "Elliott Hill",
+            "John Donahoe"
+          ],
+          "newsTerms": [
+            "Nike"
+          ],
+          "newsQuery": "\"Nike\"",
+          "officialDomains": [
+            "nike.com",
+            "news.nike.com"
+          ]
+        },
+        {
+          "id": "adidas",
+          "name": "Adidas",
+          "parent": "Adidas AG",
+          "country": "Germany",
+          "ticker": "ADS.DE",
+          "website": "https://www.adidas.com",
+          "searchTerms": [
+            "Adidas",
+            "Reebok",
+            "Bjørn Gulden",
+            "Yeezy",
+            "Samba"
+          ],
+          "newsTerms": [
+            "Adidas"
+          ],
+          "newsQuery": "\"adidas\"",
+          "officialDomains": [
+            "adidas-group.com",
+            "adidas.com"
+          ]
+        },
+        {
+          "id": "puma",
+          "name": "Puma",
+          "parent": "Puma SE",
+          "country": "Germany",
+          "ticker": "PUM.DE",
+          "website": "https://www.puma.com",
+          "searchTerms": [
+            "Puma",
+            "Arne Freundt"
+          ]
+        },
+        {
+          "id": "on",
+          "name": "On",
+          "parent": "On Holding AG",
+          "country": "Switzerland",
+          "ticker": "ONON",
+          "website": "https://www.on.com",
+          "searchTerms": [
+            "On Running",
+            "On Holding",
+            "On shoes",
+            "Roger Federer shoe"
+          ]
+        },
+        {
+          "id": "salomon",
+          "name": "Salomon",
+          "parent": "Amer Sports",
+          "country": "France",
+          "ticker": "AS",
+          "website": "https://www.salomon.com",
+          "searchTerms": [
+            "Salomon",
+            "Amer Sports",
+            "Arc'teryx"
+          ]
+        },
+        {
+          "id": "uniqlo",
+          "name": "Uniqlo",
+          "parent": "Fast Retailing",
+          "country": "Japan",
+          "ticker": "9983.T",
+          "website": "https://www.uniqlo.com",
+          "searchTerms": [
+            "Uniqlo",
+            "Fast Retailing"
+          ],
+          "newsTerms": [
+            "Uniqlo",
+            "Fast Retailing"
+          ],
+          "newsQuery": "Uniqlo OR \"Fast Retailing\"",
+          "officialDomains": [
+            "fastretailing.com",
+            "uniqlo.com"
+          ]
+        },
+        {
+          "id": "mango",
+          "name": "Mango",
+          "parent": "Punto Fa, S.L.",
+          "country": "Spain",
+          "ticker": null,
+          "website": "https://shop.mango.com",
+          "searchTerms": [
+            "Mango fashion",
+            "Mango clothing",
+            "Mango retailer",
+            "Mango stores"
+          ],
+          "newsTerms": [
+            "Mango"
+          ],
+          "newsQuery": "\"Mango\" (fashion OR clothing OR retailer OR stores)",
+          "officialDomains": [
+            "mango.com",
+            "shop.mango.com"
+          ]
+        },
+        {
+          "id": "cos",
+          "name": "COS",
+          "parent": "H&M Group",
+          "country": "Sweden",
+          "ticker": null,
+          "website": "https://www.cos.com",
+          "searchTerms": [
+            "COS fashion",
+            "COS clothing",
+            "COS stores",
+            "COS collection"
+          ],
+          "newsTerms": [
+            "COS"
+          ],
+          "caseSensitive": true,
+          "newsQuery": "\"COS\" (fashion OR clothing OR \"H&M Group\" OR collection)",
+          "officialDomains": [
+            "cos.com",
+            "hmgroup.com"
+          ]
+        },
+        {
+          "id": "pull-and-bear",
+          "name": "Pull&Bear",
+          "parent": "Inditex",
+          "country": "Spain",
+          "ticker": null,
+          "website": "https://www.pullandbear.com",
+          "searchTerms": [
+            "Pull&Bear",
+            "Pull & Bear"
+          ],
+          "newsTerms": [
+            "Pull&Bear",
+            "Pull & Bear"
+          ],
+          "newsQuery": "\"Pull&Bear\"",
+          "officialDomains": [
+            "pullandbear.com",
+            "inditex.com"
+          ]
+        },
+        {
+          "id": "bershka",
+          "name": "Bershka",
+          "parent": "Inditex",
+          "country": "Spain",
+          "ticker": null,
+          "website": "https://www.bershka.com",
+          "searchTerms": [
+            "Bershka"
+          ],
+          "newsTerms": [
+            "Bershka"
+          ],
+          "newsQuery": "\"Bershka\"",
+          "officialDomains": [
+            "bershka.com",
+            "inditex.com"
+          ]
+        },
+        {
+          "id": "massimo-dutti",
+          "name": "Massimo Dutti",
+          "parent": "Inditex",
+          "country": "Spain",
+          "ticker": null,
+          "website": "https://www.massimodutti.com",
+          "searchTerms": [
+            "Massimo Dutti"
+          ],
+          "newsTerms": [
+            "Massimo Dutti"
+          ],
+          "newsQuery": "\"Massimo Dutti\"",
+          "officialDomains": [
+            "massimodutti.com",
+            "inditex.com"
+          ]
+        },
+        {
+          "id": "stradivarius",
+          "name": "Stradivarius",
+          "parent": "Inditex",
+          "country": "Spain",
+          "ticker": null,
+          "website": "https://www.stradivarius.com",
+          "searchTerms": [
+            "Stradivarius fashion",
+            "Stradivarius stores",
+            "Stradivarius Inditex"
+          ],
+          "newsTerms": [
+            "Stradivarius"
+          ],
+          "newsQuery": "\"Stradivarius\" (fashion OR retailer OR Inditex OR stores)",
+          "officialDomains": [
+            "stradivarius.com",
+            "inditex.com"
+          ]
+        },
+        {
+          "id": "the-north-face",
+          "name": "The North Face",
+          "parent": "VF Corporation",
+          "country": "United States",
+          "ticker": "VFC",
+          "website": "https://www.thenorthface.com",
+          "searchTerms": [
+            "The North Face",
+            "VF Corporation"
+          ],
+          "newsTerms": [
+            "The North Face"
+          ],
+          "newsQuery": "\"The North Face\"",
+          "officialDomains": [
+            "thenorthface.com",
+            "vfc.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "beauty",
+      "label": "Beauty",
+      "icon": "💄",
+      "brands": [
+        {
+          "id": "loreal",
+          "name": "L'Oréal",
+          "parent": "L'Oréal S.A.",
+          "country": "France",
+          "ticker": "OR.PA",
+          "website": "https://www.loreal.com",
+          "searchTerms": [
+            "L'Oréal",
+            "Loreal",
+            "Lancôme",
+            "Maybelline",
+            "Garnier"
+          ]
+        },
+        {
+          "id": "estee-lauder",
+          "name": "Estée Lauder",
+          "parent": "The Estée Lauder Companies",
+          "country": "USA",
+          "ticker": "EL",
+          "website": "https://www.elcompanies.com",
+          "searchTerms": [
+            "Estée Lauder",
+            "Clinique",
+            "MAC Cosmetics",
+            "Bobbi Brown",
+            "Jo Malone"
+          ]
+        },
+        {
+          "id": "sephora",
+          "name": "Sephora",
+          "parent": "LVMH",
+          "country": "France",
+          "ticker": "MC.PA",
+          "website": "https://www.sephora.com",
+          "searchTerms": [
+            "Sephora"
+          ]
+        },
+        {
+          "id": "unilever",
+          "name": "Unilever",
+          "parent": "Unilever PLC",
+          "country": "UK/Netherlands",
+          "ticker": "ULVR.L",
+          "website": "https://www.unilever.com",
+          "searchTerms": [
+            "Unilever",
+            "Dove",
+            "Axe",
+            "Lynx",
+            "Vaseline",
+            "Tresemmé"
+          ]
+        },
+        {
+          "id": "pg",
+          "name": "Procter & Gamble",
+          "parent": "The Procter & Gamble Company",
+          "country": "USA",
+          "ticker": "PG",
+          "website": "https://us.pg.com",
+          "searchTerms": [
+            "Procter & Gamble",
+            "P&G",
+            "Pantene",
+            "Olay",
+            "Gillette",
+            "Pampers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "Technology",
+      "icon": "💻",
+      "brands": [
+        {
+          "id": "apple",
+          "name": "Apple",
+          "parent": "Apple Inc.",
+          "country": "USA",
+          "ticker": "AAPL",
+          "website": "https://www.apple.com",
+          "searchTerms": [
+            "Apple",
+            "iPhone",
+            "Mac",
+            "iPad",
+            "Apple Watch"
+          ]
+        },
+        {
+          "id": "samsung",
+          "name": "Samsung",
+          "parent": "Samsung Electronics",
+          "country": "South Korea",
+          "ticker": "005930.KS",
+          "website": "https://www.samsung.com",
+          "searchTerms": [
+            "Samsung",
+            "Galaxy"
+          ]
+        },
+        {
+          "id": "google",
+          "name": "Google",
+          "parent": "Alphabet Inc.",
+          "country": "USA",
+          "ticker": "GOOGL",
+          "website": "https://www.google.com",
+          "searchTerms": [
+            "Google",
+            "Alphabet",
+            "YouTube",
+            "DeepMind"
+          ]
+        },
+        {
+          "id": "microsoft",
+          "name": "Microsoft",
+          "parent": "Microsoft Corporation",
+          "country": "USA",
+          "ticker": "MSFT",
+          "website": "https://www.microsoft.com",
+          "searchTerms": [
+            "Microsoft",
+            "Azure",
+            "Copilot",
+            "OpenAI",
+            "Xbox"
+          ]
+        },
+        {
+          "id": "amazon",
+          "name": "Amazon",
+          "parent": "Amazon.com Inc.",
+          "country": "USA",
+          "ticker": "AMZN",
+          "website": "https://www.amazon.com",
+          "searchTerms": [
+            "Amazon",
+            "AWS",
+            "Alexa",
+            "Whole Foods"
+          ]
+        },
+        {
+          "id": "meta",
+          "name": "Meta",
+          "parent": "Meta Platforms Inc.",
+          "country": "USA",
+          "ticker": "META",
+          "website": "https://www.meta.com",
+          "searchTerms": [
+            "Meta",
+            "Facebook",
+            "Instagram",
+            "WhatsApp",
+            "Threads",
+            "Ray-Ban"
+          ]
+        },
+        {
+          "id": "nvidia",
+          "name": "Nvidia",
+          "parent": "NVIDIA Corporation",
+          "country": "USA",
+          "ticker": "NVDA",
+          "website": "https://www.nvidia.com",
+          "searchTerms": [
+            "Nvidia",
+            "CUDA",
+            "H100",
+            "GeForce"
+          ]
+        },
+        {
+          "id": "sony",
+          "name": "Sony",
+          "parent": "Sony Group Corporation",
+          "country": "Japan",
+          "ticker": "SONY",
+          "website": "https://www.sony.com",
+          "searchTerms": [
+            "Sony",
+            "PlayStation",
+            "Bravia"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "retail-consumer",
+      "label": "Retail & Consumer Goods",
+      "icon": "🛒",
+      "brands": [
+        {
+          "id": "walmart",
+          "name": "Walmart",
+          "parent": "Walmart Inc.",
+          "country": "USA",
+          "ticker": "WMT",
+          "website": "https://www.walmart.com",
+          "searchTerms": [
+            "Walmart",
+            "Sam's Club"
+          ]
+        },
+        {
+          "id": "costco",
+          "name": "Costco",
+          "parent": "Costco Wholesale Corporation",
+          "country": "USA",
+          "ticker": "COST",
+          "website": "https://www.costco.com",
+          "searchTerms": [
+            "Costco"
+          ]
+        },
+        {
+          "id": "ikea",
+          "name": "IKEA",
+          "parent": "Ingka Group / Inter IKEA",
+          "country": "Netherlands/Sweden",
+          "ticker": null,
+          "website": "https://www.ikea.com",
+          "searchTerms": [
+            "IKEA"
+          ]
+        },
+        {
+          "id": "starbucks",
+          "name": "Starbucks",
+          "parent": "Starbucks Corporation",
+          "country": "USA",
+          "ticker": "SBUX",
+          "website": "https://www.starbucks.com",
+          "searchTerms": [
+            "Starbucks"
+          ]
+        },
+        {
+          "id": "mcdonalds",
+          "name": "McDonald's",
+          "parent": "McDonald's Corporation",
+          "country": "USA",
+          "ticker": "MCD",
+          "website": "https://corporate.mcdonalds.com",
+          "searchTerms": [
+            "McDonald's",
+            "McDonalds"
+          ]
+        },
+        {
+          "id": "coca-cola",
+          "name": "Coca-Cola",
+          "parent": "The Coca-Cola Company",
+          "country": "USA",
+          "ticker": "KO",
+          "website": "https://www.coca-colacompany.com",
+          "searchTerms": [
+            "Coca-Cola",
+            "Coke",
+            "Sprite",
+            "Fanta"
+          ]
+        },
+        {
+          "id": "pepsico",
+          "name": "PepsiCo",
+          "parent": "PepsiCo Inc.",
+          "country": "USA",
+          "ticker": "PEP",
+          "website": "https://www.pepsico.com",
+          "searchTerms": [
+            "PepsiCo",
+            "Pepsi",
+            "Lay's",
+            "Gatorade",
+            "Quaker"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "automotive",
+      "label": "Automotive",
+      "icon": "🚗",
+      "brands": [
+        {
+          "id": "tesla",
+          "name": "Tesla",
+          "parent": "Tesla Inc.",
+          "country": "USA",
+          "ticker": "TSLA",
+          "website": "https://www.tesla.com",
+          "searchTerms": [
+            "Tesla",
+            "Elon Musk electric vehicle"
+          ]
+        },
+        {
+          "id": "bmw",
+          "name": "BMW",
+          "parent": "BMW Group",
+          "country": "Germany",
+          "ticker": "BMW.DE",
+          "website": "https://www.bmwgroup.com",
+          "searchTerms": [
+            "BMW",
+            "Mini",
+            "Rolls-Royce"
+          ]
+        },
+        {
+          "id": "mercedes",
+          "name": "Mercedes-Benz",
+          "parent": "Mercedes-Benz Group AG",
+          "country": "Germany",
+          "ticker": "MBG.DE",
+          "website": "https://www.mercedes-benz.com",
+          "searchTerms": [
+            "Mercedes-Benz",
+            "Mercedes",
+            "AMG"
+          ]
+        },
+        {
+          "id": "ferrari",
+          "name": "Ferrari",
+          "parent": "Ferrari N.V.",
+          "country": "Italy",
+          "ticker": "RACE",
+          "website": "https://www.ferrari.com",
+          "searchTerms": [
+            "Ferrari"
+          ]
+        },
+        {
+          "id": "byd",
+          "name": "BYD",
+          "parent": "BYD Company Limited",
+          "country": "China",
+          "ticker": "002594.SZ",
+          "website": "https://www.byd.com",
+          "searchTerms": [
+            "BYD",
+            "BYD electric"
+          ]
+        },
+        {
+          "id": "toyota",
+          "name": "Toyota",
+          "parent": "Toyota Motor Corporation",
+          "country": "Japan",
+          "ticker": "TM",
+          "website": "https://www.toyota-global.com",
+          "searchTerms": [
+            "Toyota",
+            "Lexus",
+            "Land Cruiser"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Global Brand Intelligence</title>
+  <meta name="description" content="Inside the investments, technology and strategies shaping the world's leading brands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   GLOBAL BRAND INTELLIGENCE — Design System
+   Financial Times / Bloomberg inspired editorial aesthetics.
+═══════════════════════════════════════════════════════════════════════ */
+:root {
+  --ink:#1a1a1a;--ink-medium:#3a3a3a;--ink-light:#6b6b6b;--ink-faint:#9a9a9a;
+  --paper:#f8f5f0;--paper-warm:#f2ede6;--paper-card:#faf8f4;
+  --rule:#d4cfc8;--rule-dark:#b0a89e;
+  --accent:#8b1a1a;--accent-mid:#a52020;--accent-pale:#f5e8e8;
+  --gold:#c9a84c;
+  --font-display:'Playfair Display','Georgia',serif;
+  --font-serif:'Source Serif 4','Georgia',serif;
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --max-width:1280px;--col-gap:32px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-serif);font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button{cursor:pointer;font-family:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:4px;padding:7px 16px;border:1px solid transparent;border-radius:2px;font-family:var(--font-sans);font-size:.8125rem;font-weight:500;line-height:1;text-decoration:none;transition:background .15s,color .15s,border-color .15s;white-space:nowrap;cursor:pointer}
+.btn--primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn--primary:hover{background:var(--accent-mid)}
+.btn--ghost{background:transparent;color:var(--ink-medium);border-color:var(--rule-dark)}
+.btn--ghost:hover{background:var(--paper-warm)}
+.btn--sm{padding:5px 12px;font-size:.75rem}
+
+/* Masthead */
+.masthead{background:var(--paper);border-bottom:3px solid var(--ink);padding:16px 0 0}
+.masthead__inner{max-width:var(--max-width);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px}
+.masthead__meta{font-family:var(--font-sans);font-size:.75rem;color:var(--ink-light);letter-spacing:.04em;text-transform:uppercase}
+.masthead__title-block{text-align:center;padding:16px 0}
+.masthead__rule-top,.masthead__rule-bottom{height:1px;background:var(--rule-dark);margin:4px 0}
+.masthead__title{font-family:var(--font-display);font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.1}
+.masthead__tagline{font-family:var(--font-serif);font-style:italic;font-size:clamp(.8rem,1.5vw,.95rem);color:var(--ink-medium);margin-top:4px}
+.masthead__controls{display:flex;align-items:center;justify-content:flex-end;gap:16px}
+.masthead__status{display:flex;align-items:center;gap:6px;font-family:var(--font-sans);font-size:.75rem;color:var(--ink-light)}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.status-dot--loading{background:var(--gold);animation:pulse 1.2s ease-in-out infinite}
+.status-dot--ok{background:#2d7a2d}
+.status-dot--error{background:var(--accent)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* Nav bar */
+.nav-bar{background:var(--ink);position:sticky;top:0;z-index:100}
+.nav-bar__inner{max-width:var(--max-width);margin:0 auto;padding:0 24px;display:flex;align-items:stretch;gap:16px;min-height:44px}
+.nav-bar__sections{display:flex;list-style:none;gap:0;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-bar__sections::-webkit-scrollbar{display:none}
+.nav-link{display:block;padding:0 14px;line-height:44px;font-family:var(--font-sans);font-size:.78rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75);text-decoration:none;white-space:nowrap;border-bottom:3px solid transparent;transition:color .15s,border-color .15s;margin-bottom:-3px}
+.nav-link:hover{color:#fff}
+.nav-link--active{color:#fff;border-bottom-color:var(--gold)}
+
+/* Search */
+.search-form{display:flex;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:2px;padding:0 10px;margin:6px 0;min-width:200px;transition:background .15s}
+.search-form:focus-within{background:rgba(255,255,255,.15)}
+.search-form__input{background:none;border:none;outline:none;font-family:var(--font-sans);font-size:.8rem;color:#fff;width:100%;padding:4px 0}
+.search-form__input::placeholder{color:rgba(255,255,255,.45)}
+.search-form__btn{background:none;border:none;color:rgba(255,255,255,.6);padding:2px;display:flex;align-items:center;transition:color .15s}
+.search-form__btn:hover{color:#fff}
+
+/* Filter bar */
+.filter-bar{background:var(--paper-warm);border-bottom:1px solid var(--rule)}
+.filter-bar__inner{max-width:var(--max-width);margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.filter-bar__group{display:flex;align-items:center;gap:8px}
+.filter-bar__label{font-family:var(--font-sans);font-size:.75rem;font-weight:500;color:var(--ink-light);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.filter-bar__select{border:1px solid var(--rule-dark);border-radius:2px;background:#fff;font-family:var(--font-sans);font-size:.8rem;color:var(--ink);padding:4px 8px;cursor:pointer}
+.filter-bar__count{font-family:var(--font-sans);font-size:.78rem;color:var(--ink-light);margin-left:auto}
+
+/* Main */
+.main-content{max-width:var(--max-width);margin:0 auto;padding:40px 24px;min-height:60vh}
+.view{display:block}
+.view[hidden]{display:none}
+
+/* Section header */
+.section-header{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:40px}
+.section-header__title{font-family:var(--font-display);font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:700;color:var(--ink)}
+.section-header__sub{font-family:var(--font-sans);font-size:.82rem;color:var(--ink-light);margin-top:4px}
+
+/* States */
+.state-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:64px 24px;text-align:center}
+.state-panel__icon{width:48px;height:48px;color:var(--ink-faint)}
+.state-panel__msg{font-family:var(--font-sans);font-size:.9rem;color:var(--ink-light);max-width:400px}
+.spinner{width:36px;height:36px;border:3px solid var(--rule);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Stale banner */
+.stale-banner{display:flex;align-items:center;gap:8px;background:#fff8e1;border:1px solid #f0d060;border-radius:4px;padding:8px 14px;margin-bottom:16px;font-family:var(--font-sans);font-size:.8rem;color:#7a6000}
+.stale-banner__link{background:none;border:none;color:var(--accent);text-decoration:underline;font-size:inherit;padding:0;cursor:pointer}
+
+/* Data notice */
+.data-notice{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-sans);font-size:.72rem;color:#2d7a2d;margin-bottom:24px;font-style:italic}
+.data-notice__dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+
+/* Article layout */
+.articles-lead{display:grid;grid-template-columns:1fr 1fr;gap:var(--col-gap);margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--rule)}
+@media(max-width:768px){.articles-lead{grid-template-columns:1fr}}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px var(--col-gap);margin-bottom:40px}
+@media(max-width:1024px){.articles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.articles-grid{grid-template-columns:1fr;gap:24px}}
+
+/* Article card */
+.article-card{display:flex;flex-direction:column;border-top:2px solid var(--rule);padding-top:16px}
+.article-card--lead{border-top-color:var(--accent);border-top-width:3px}
+.article-card__kicker{font-family:var(--font-sans);font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.brand-tag{display:inline-flex;align-items:center;background:var(--accent-pale);color:var(--accent);border-radius:2px;padding:1px 6px;font-size:.65rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:none;font-family:var(--font-sans)}
+.brand-tag:hover{background:var(--accent);color:#fff}
+.article-card__headline{font-family:var(--font-display);font-size:1.15rem;font-weight:700;line-height:1.3;margin-bottom:8px;color:var(--ink)}
+.article-card--lead .article-card__headline{font-size:clamp(1.3rem,2.2vw,1.75rem)}
+.article-card__headline a{text-decoration:none;color:inherit;transition:color .12s}
+.article-card__headline a:hover{color:var(--accent)}
+.article-card__summary{font-family:var(--font-serif);font-size:.9rem;color:var(--ink-medium);line-height:1.65;margin-bottom:16px;flex:1}
+.article-card--lead .article-card__summary{font-size:1rem}
+.article-card__meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-family:var(--font-sans);font-size:.73rem;color:var(--ink-faint);margin-top:auto}
+.article-card__source{color:var(--ink-light);font-weight:500}
+.article-card__read-more{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-sans);font-size:.73rem;font-weight:600;color:var(--accent);text-decoration:none;text-transform:uppercase;letter-spacing:.05em;margin-left:auto;transition:opacity .12s}
+.article-card__read-more:hover{opacity:.75}
+
+/* Article list */
+.article-list{list-style:none}
+.article-list__item{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.article-list__item:first-child{border-top:1px solid var(--rule)}
+.article-list__headline{font-family:var(--font-display);font-size:1rem;font-weight:700;line-height:1.3}
+.article-list__headline a{text-decoration:none}
+.article-list__headline a:hover{color:var(--accent)}
+.article-list__meta{font-family:var(--font-sans);font-size:.72rem;color:var(--ink-faint);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.section-divider{height:1px;background:var(--rule);margin:40px 0}
+
+/* Brand directory */
+.brand-industry-section{margin-bottom:64px}
+.brand-industry-section__title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.brand-card{background:var(--paper-card);border:1px solid var(--rule);border-radius:4px;padding:16px;cursor:pointer;transition:border-color .15s,box-shadow .15s;text-align:left;font-family:inherit;width:100%}
+.brand-card:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(139,26,26,.1)}
+.brand-card__name{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:2px}
+.brand-card__parent{font-family:var(--font-sans);font-size:.72rem;color:var(--ink-light);margin-bottom:8px}
+.brand-card__meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px}
+.brand-card__country{font-family:var(--font-sans);font-size:.7rem;color:var(--ink-faint)}
+.brand-card__ticker{font-family:'Courier New',monospace;font-size:.7rem;background:var(--paper-warm);border:1px solid var(--rule);border-radius:2px;padding:0 4px;color:var(--ink-medium)}
+
+/* Brand profile */
+.brand-profile__header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-bottom:24px;border-bottom:2px solid var(--ink);margin-bottom:40px}
+.brand-profile__name{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;line-height:1.1}
+.brand-profile__parent{font-family:var(--font-serif);font-style:italic;font-size:1rem;color:var(--ink-medium);margin-top:4px}
+.brand-profile__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.brand-profile__chip{font-family:var(--font-sans);font-size:.72rem;border:1px solid var(--rule-dark);border-radius:20px;padding:3px 10px;color:var(--ink-medium)}
+.brand-profile__actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+/* Feed status */
+.feed-status-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;margin-top:40px;padding-top:40px;border-top:1px solid var(--rule)}
+.feed-status-card{display:flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:.75rem;padding:6px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--paper-card)}
+.fsd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.fsd-dot--ok{background:#2d7a2d}
+.fsd-dot--error{background:var(--accent)}
+.fsd-name{color:var(--ink-medium);flex:1}
+.fsd-count{color:var(--ink-faint);margin-left:auto}
+.fsd-error{color:var(--accent);font-size:.68rem;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Footer */
+.site-footer{background:var(--ink);color:rgba(255,255,255,.55);padding:40px 0;margin-top:64px}
+.site-footer__inner{max-width:var(--max-width);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:8px}
+.site-footer__name{font-family:var(--font-display);font-size:1.1rem;color:#fff;font-weight:600}
+.site-footer__disclaimer{font-family:var(--font-sans);font-size:.75rem;line-height:1.6;max-width:700px}
+
+/* Responsive */
+@media(max-width:768px){
+  .masthead__inner{grid-template-columns:1fr;text-align:center}
+  .masthead__controls{justify-content:center}
+  .nav-bar__inner,.main-content{padding-left:16px;padding-right:16px}
+  .search-form{min-width:140px}
+}
+@media print{
+  .nav-bar,.filter-bar,.masthead__controls,.search-form,.btn,.stale-banner,.site-footer{display:none!important}
+  body{background:#fff;color:#000}
+}
+
+.skip-link{position:absolute;top:-50px;left:20px;background:var(--ink);color:#fff;padding:8px 16px;z-index:1000;font-family:var(--font-sans);font-size:.85rem;font-weight:600;border-radius:2px;transition:top .15s;text-decoration:underline}
+.skip-link:focus{top:10px;outline:3px solid var(--gold)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.brand-pills-bar{display:flex;align-items:center;gap:8px;overflow-x:auto;padding:4px 0 16px;margin-bottom:24px;border-bottom:1px solid var(--rule);scrollbar-width:thin}
+.brand-pills-label{font-family:var(--font-sans);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);white-space:nowrap;margin-right:4px}
+.brand-pill{background:#fff;border:1px solid var(--rule-dark);border-radius:20px;padding:4px 12px;font-family:var(--font-sans);font-size:.75rem;font-weight:500;color:var(--ink);cursor:pointer;white-space:nowrap;transition:all .12s}
+.brand-pill:hover{border-color:var(--accent);color:var(--accent)}
+.brand-pill--active{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+</style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to brand headlines</a>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead__inner">
+    <div class="masthead__meta">
+      <span id="pub-date"></span>
+      &nbsp;·&nbsp;Global Edition
+    </div>
+    <div class="masthead__title-block">
+      <div class="masthead__rule-top"></div>
+      <h1 class="masthead__title">Global Brand Intelligence</h1>
+      <p class="masthead__tagline">Inside the investments, technology and strategies shaping the world's leading brands</p>
+      <div class="masthead__rule-bottom"></div>
+    </div>
+    <div class="masthead__controls">
+      <div class="masthead__status">
+        <span id="status-dot" class="status-dot status-dot--loading"></span>
+        <span id="status-text">Loading…</span>
+      </div>
+      <button id="refresh-btn" class="btn btn--ghost btn--sm">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        Refresh
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <div class="nav-bar__inner">
+    <ul class="nav-bar__sections">
+      <li><a href="#" class="nav-link nav-link--active" data-view="home" data-section="headlines" aria-current="page">Today's Global Brand Headlines</a></li>
+      <li><a href="#" class="nav-link" data-section="corporate">Corporate</a></li>
+      <li><a href="#" class="nav-link" data-section="investment">Investment &amp; Tech</a></li>
+      <li><a href="#" class="nav-link" data-section="marketing">Marketing</a></li>
+      <li><a href="#" class="nav-link" data-section="expansion">Expansion</a></li>
+      <li><a href="#" class="nav-link" data-section="financial">Financial Results</a></li>
+      <li><a href="#" class="nav-link" data-section="executive">Executive Insights</a></li>
+      <li><a href="#" class="nav-link" data-view="brands">Brand Directory</a></li>
+    </ul>
+    <form class="search-form" id="search-form">
+      <input id="search-input" type="search" class="search-form__input" placeholder="Search brands, topics…" autocomplete="off" />
+      <button type="submit" class="search-form__btn" aria-label="Search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </form>
+  </div>
+</nav>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar" hidden>
+  <div class="filter-bar__inner">
+    <div class="filter-bar__group">
+      <label class="filter-bar__label" for="filter-industry">Industry</label>
+      <select id="filter-industry" class="filter-bar__select">
+        <option value="">All industries</option>
+        <option value="fashion-luxury">Fashion &amp; Luxury</option>
+        <option value="beauty">Beauty</option>
+        <option value="technology">Technology</option>
+        <option value="retail-consumer">Retail &amp; Consumer</option>
+        <option value="automotive">Automotive</option>
+      </select>
+    </div>
+    <div class="filter-bar__group">
+      <label class="filter-bar__label" for="filter-date">Date</label>
+      <select id="filter-date" class="filter-bar__select">
+        <option value="">Any time</option>
+        <option value="24h">Last 24 hours</option>
+        <option value="48h">Last 48 hours</option>
+        <option value="7d">Last 7 days</option>
+        <option value="30d">Last 30 days</option>
+      </select>
+    </div>
+    <button id="filter-clear" class="btn btn--ghost btn--sm">Clear</button>
+    <span class="filter-bar__count" id="filter-count"></span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main-content" id="main-content">
+
+  <!-- HOME VIEW -->
+  <div id="view-home" class="view">
+    <div class="section-header">
+      <h2 class="section-header__title" id="section-title">Today's Global Brand Headlines</h2>
+      <p class="section-header__sub" id="section-sub">The top brand stories from around the world.</p>
+    </div>
+
+    
+    <div class="brand-pills-bar" id="brand-pills-bar" role="toolbar" aria-label="Brand quick filters">
+      <span class="brand-pills-label">Fast Filter:</span>
+      <button class="brand-pill brand-pill--active" data-brand-filter="">All Brands</button>
+      <button class="brand-pill" data-brand-filter="Apple">Apple</button>
+      <button class="brand-pill" data-brand-filter="Tesla">Tesla</button>
+      <button class="brand-pill" data-brand-filter="Zara / Inditex">Zara</button>
+      <button class="brand-pill" data-brand-filter="Nvidia">Nvidia</button>
+      <button class="brand-pill" data-brand-filter="Chanel">Chanel</button>
+      <button class="brand-pill" data-brand-filter="Starbucks">Starbucks</button>
+      <button class="brand-pill" data-brand-filter="Coca-Cola">Coca-Cola</button>
+      <button class="brand-pill" data-brand-filter="Mercedes-Benz">Mercedes-Benz</button>
+      <button class="brand-pill" data-brand-filter="McDonald's">McDonald's</button>
+      <button class="brand-pill" data-brand-filter="Estée Lauder">Estée Lauder</button>
+      <button class="brand-pill" data-brand-filter="H&M Group">H&M</button>
+    </div>
+    <div id="state-loading" class="state-panel">
+      <div class="spinner"></div>
+      <p class="state-panel__msg">Fetching the latest brand intelligence from live RSS feeds…</p>
+    </div>
+    <div id="state-error" class="state-panel" hidden>
+      <svg class="state-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p class="state-panel__msg" id="error-msg">Unable to load feeds.</p>
+      <button class="btn btn--primary" id="retry-btn">Try again</button>
+    </div>
+    <div id="state-empty" class="state-panel" hidden>
+      <svg class="state-panel__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <p class="state-panel__msg">No articles match your current filters.</p>
+    </div>
+    <div id="stale-banner" class="stale-banner" hidden>
+      ⏱ Showing cached data —
+      <button class="stale-banner__link" id="stale-refresh-btn">refresh now</button>
+    </div>
+    <div id="articles-container" hidden></div>
+  </div>
+
+  <!-- BRANDS VIEW -->
+  <div id="view-brands" class="view" hidden>
+    <div class="section-header">
+      <h2 class="section-header__title">Brand Directory</h2>
+      <p class="section-header__sub">Click any brand to view its profile and latest coverage.</p>
+    </div>
+    <div id="brand-directory"></div>
+  </div>
+
+  <!-- BRAND PROFILE VIEW -->
+  <div id="view-brand-profile" class="view" hidden>
+    <div id="brand-profile-content"></div>
+  </div>
+
+  <!-- SEARCH VIEW -->
+  <div id="view-search" class="view" hidden>
+    <div class="section-header">
+      <h2 class="section-header__title">Search Results</h2>
+      <p class="section-header__sub" id="search-sub"></p>
+    </div>
+    <div id="search-results"></div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__name">Global Brand Intelligence</p>
+    <p class="site-footer__disclaimer">
+      All articles link to original sources. Content is retrieved from publicly available RSS feeds.
+      No headlines, dates, financial figures or links are fabricated.
+      <span id="footer-time"></span>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   GLOBAL BRAND INTELLIGENCE — Application
+   Standalone version: fetches RSS via rss2json.com (free CORS proxy).
+   Works by opening index.html directly — no server required.
+═══════════════════════════════════════════════════════════════════════ */
+'use strict';
+
+// ─── Brand directory ───────────────────────────────────────────────────────
+const BRANDS_DATA = {
+  industries: [
+    { id:'fashion-luxury', label:'Fashion & Luxury', icon:'👜', brands:[
+      { id:'lvmh',      name:'LVMH',           parent:'LVMH Moët Hennessy Louis Vuitton', country:'France',           ticker:'MC.PA',    website:'https://www.lvmh.com',        terms:['LVMH','Louis Vuitton','Dior','Givenchy','Bulgari','Fendi','Moët'] },
+      { id:'gucci',     name:'Gucci',           parent:'Kering',                          country:'France/Italy',     ticker:'KER.PA',   website:'https://www.gucci.com',        terms:['Gucci','Kering','Saint Laurent','Balenciaga','Bottega Veneta'] },
+      { id:'chanel',    name:'Chanel',          parent:'Chanel S.A.',                     country:'France',           ticker:null,       website:'https://www.chanel.com',       terms:['Chanel'] },
+      { id:'hermes',    name:'Hermès',          parent:'Hermès International',            country:'France',           ticker:'RMS.PA',   website:'https://www.hermes.com',       terms:['Hermès','Hermes','Birkin'] },
+      { id:'prada',     name:'Prada',           parent:'Prada Group',                     country:'Italy',            ticker:'1913.HK',  website:'https://www.prada.com',        terms:['Prada','Miu Miu'] },
+      { id:'richemont', name:'Richemont',       parent:'Compagnie Financière Richemont',  country:'Switzerland',      ticker:'CFR.SW',   website:'https://www.richemont.com',    terms:['Richemont','Cartier','IWC','Van Cleef'] },
+      { id:'zara',      name:'Zara / Inditex',  parent:'Inditex',                         country:'Spain',            ticker:'ITX.MC',   website:'https://www.inditex.com',      terms:['Zara','Inditex','Massimo Dutti'] },
+      { id:'hm',        name:'H&M Group',       parent:'Hennes & Mauritz',                country:'Sweden',           ticker:'HM-B.ST',  website:'https://hmgroup.com',          terms:['H&M','COS','& Other Stories'] },
+      { id:'nike',      name:'Nike',            parent:'Nike Inc.',                       country:'USA',              ticker:'NKE',      website:'https://www.nike.com',         terms:['Nike','Jordan Brand','Converse'] },
+      { id:'adidas',    name:'Adidas',          parent:'Adidas AG',                       country:'Germany',          ticker:'ADS.DE',   website:'https://www.adidas.com',       terms:['Adidas','Reebok'] },
+      { id:'puma',      name:'Puma',            parent:'Puma SE',                         country:'Germany',          ticker:'PUM.DE',   website:'https://www.puma.com',         terms:['Puma'] },
+      { id:'on',        name:'On',              parent:'On Holding AG',                   country:'Switzerland',      ticker:'ONON',     website:'https://www.on.com',           terms:['On Running','On Holding'] },
+      { id:'salomon',   name:'Salomon',         parent:'Amer Sports',                     country:'France',           ticker:'AS',       website:'https://www.salomon.com',      terms:['Salomon','Amer Sports'] },
+    ]},
+    { id:'beauty', label:'Beauty', icon:'💄', brands:[
+      { id:'loreal',      name:"L'Oréal",            parent:"L'Oréal S.A.",                country:'France',    ticker:'OR.PA',   website:'https://www.loreal.com',        terms:["L'Oréal","Loreal","Lancôme","Maybelline","Garnier"] },
+      { id:'estee-lauder',name:'Estée Lauder',        parent:'The Estée Lauder Companies', country:'USA',       ticker:'EL',      website:'https://www.elcompanies.com',   terms:['Estée Lauder','Clinique','MAC Cosmetics','Bobbi Brown','Jo Malone'] },
+      { id:'sephora',     name:'Sephora',             parent:'LVMH',                       country:'France',    ticker:'MC.PA',   website:'https://www.sephora.com',       terms:['Sephora'] },
+      { id:'unilever',    name:'Unilever',            parent:'Unilever PLC',               country:'UK',        ticker:'ULVR.L',  website:'https://www.unilever.com',      terms:['Unilever','Dove','Axe','Vaseline'] },
+      { id:'pg',          name:'Procter & Gamble',    parent:'The Procter & Gamble Co.',   country:'USA',       ticker:'PG',      website:'https://us.pg.com',             terms:['Procter & Gamble','P&G','Pantene','Olay','Gillette','Pampers'] },
+    ]},
+    { id:'technology', label:'Technology', icon:'💻', brands:[
+      { id:'apple',     name:'Apple',      parent:'Apple Inc.',            country:'USA',         ticker:'AAPL',       website:'https://www.apple.com',       terms:['Apple','iPhone','Mac','iPad','Apple Watch','Vision Pro'] },
+      { id:'samsung',   name:'Samsung',    parent:'Samsung Electronics',   country:'South Korea', ticker:'005930.KS',  website:'https://www.samsung.com',     terms:['Samsung','Galaxy'] },
+      { id:'google',    name:'Google',     parent:'Alphabet Inc.',         country:'USA',         ticker:'GOOGL',      website:'https://www.google.com',      terms:['Google','Alphabet','YouTube','DeepMind','Gemini'] },
+      { id:'microsoft', name:'Microsoft',  parent:'Microsoft Corporation', country:'USA',         ticker:'MSFT',       website:'https://www.microsoft.com',   terms:['Microsoft','Azure','Copilot','OpenAI','Xbox'] },
+      { id:'amazon',    name:'Amazon',     parent:'Amazon.com Inc.',       country:'USA',         ticker:'AMZN',       website:'https://www.amazon.com',      terms:['Amazon','AWS','Alexa'] },
+      { id:'meta',      name:'Meta',       parent:'Meta Platforms Inc.',   country:'USA',         ticker:'META',       website:'https://www.meta.com',        terms:['Meta','Facebook','Instagram','WhatsApp','Threads'] },
+      { id:'nvidia',    name:'Nvidia',     parent:'NVIDIA Corporation',    country:'USA',         ticker:'NVDA',       website:'https://www.nvidia.com',      terms:['Nvidia','CUDA','H100','GeForce'] },
+      { id:'sony',      name:'Sony',       parent:'Sony Group Corporation',country:'Japan',       ticker:'SONY',       website:'https://www.sony.com',        terms:['Sony','PlayStation','Bravia'] },
+    ]},
+    { id:'retail-consumer', label:'Retail & Consumer Goods', icon:'🛒', brands:[
+      { id:'walmart',   name:'Walmart',      parent:'Walmart Inc.',                 country:'USA',            ticker:'WMT',   website:'https://www.walmart.com',          terms:["Walmart","Sam's Club"] },
+      { id:'costco',    name:'Costco',       parent:'Costco Wholesale Corporation', country:'USA',            ticker:'COST',  website:'https://www.costco.com',           terms:['Costco'] },
+      { id:'ikea',      name:'IKEA',         parent:'Ingka Group',                  country:'Sweden',         ticker:null,    website:'https://www.ikea.com',             terms:['IKEA'] },
+      { id:'starbucks', name:'Starbucks',    parent:'Starbucks Corporation',        country:'USA',            ticker:'SBUX',  website:'https://www.starbucks.com',        terms:['Starbucks'] },
+      { id:'mcdonalds', name:"McDonald's",   parent:"McDonald's Corporation",       country:'USA',            ticker:'MCD',   website:'https://corporate.mcdonalds.com',  terms:["McDonald's","McDonalds"] },
+      { id:'coca-cola', name:'Coca-Cola',    parent:'The Coca-Cola Company',        country:'USA',            ticker:'KO',    website:'https://www.coca-colacompany.com', terms:['Coca-Cola','Coke','Sprite','Fanta'] },
+      { id:'pepsico',   name:'PepsiCo',      parent:'PepsiCo Inc.',                 country:'USA',            ticker:'PEP',   website:'https://www.pepsico.com',          terms:["PepsiCo","Pepsi","Lay's","Gatorade","Quaker"] },
+    ]},
+    { id:'automotive', label:'Automotive', icon:'🚗', brands:[
+      { id:'tesla',    name:'Tesla',          parent:'Tesla Inc.',             country:'USA',     ticker:'TSLA',     website:'https://www.tesla.com',        terms:['Tesla','Elon Musk electric'] },
+      { id:'bmw',      name:'BMW',            parent:'BMW Group',              country:'Germany', ticker:'BMW.DE',   website:'https://www.bmwgroup.com',     terms:['BMW','Mini','Rolls-Royce'] },
+      { id:'mercedes', name:'Mercedes-Benz',  parent:'Mercedes-Benz Group AG', country:'Germany', ticker:'MBG.DE',   website:'https://www.mercedes-benz.com',terms:['Mercedes-Benz','Mercedes','AMG'] },
+      { id:'ferrari',  name:'Ferrari',        parent:'Ferrari N.V.',           country:'Italy',   ticker:'RACE',     website:'https://www.ferrari.com',      terms:['Ferrari'] },
+      { id:'byd',      name:'BYD',            parent:'BYD Company Limited',    country:'China',   ticker:'002594.SZ',website:'https://www.byd.com',          terms:['BYD'] },
+      { id:'toyota',   name:'Toyota',         parent:'Toyota Motor Corporation',country:'Japan',  ticker:'TM',       website:'https://www.toyota-global.com',terms:['Toyota','Lexus','Land Cruiser'] },
+    ]},
+  ]
+};
+
+// Build flat brand term index
+const BRAND_INDEX = new Map();
+for (const ind of BRANDS_DATA.industries) {
+  for (const b of ind.brands) {
+    for (const term of b.terms) {
+      const key = term.toLowerCase();
+      if (!BRAND_INDEX.has(key)) BRAND_INDEX.set(key, []);
+      BRAND_INDEX.get(key).push({ brandId: b.id, brandName: b.name, parent: b.parent, industry: ind.id, industryLabel: ind.label });
+    }
+  }
+}
+
+// ─── RSS feeds (via rss2json.com free CORS proxy) ──────────────────────────
+// rss2json converts any RSS feed to JSON. Free tier: 1 req/sec, unlimited.
+const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+const FEEDS = [
+  { id:'bbc-business',       name:'BBC News — Business',       url:'https://feeds.bbci.co.uk/news/business/rss.xml',           cat:['headlines','corporate'] },
+  { id:'guardian-business',  name:'The Guardian — Business',   url:'https://www.theguardian.com/uk/business/rss',              cat:['headlines','corporate'] },
+  { id:'guardian-tech',      name:'The Guardian — Technology', url:'https://www.theguardian.com/uk/technology/rss',            cat:['headlines','investment'] },
+  { id:'cnbc-top',           name:'CNBC — Top News',           url:'https://www.cnbc.com/id/100003114/device/rss/rss.html',   cat:['headlines','financial'] },
+  { id:'cnbc-business',      name:'CNBC — Business',           url:'https://www.cnbc.com/id/10001147/device/rss/rss.html',    cat:['headlines','financial'] },
+  { id:'marketwatch-top',    name:'MarketWatch — Top Stories', url:'https://feeds.marketwatch.com/marketwatch/topstories/',   cat:['headlines','financial'] },
+  { id:'techcrunch',         name:'TechCrunch',                url:'https://techcrunch.com/feed/',                            cat:['investment','technology'] },
+  { id:'theverge',           name:'The Verge',                 url:'https://www.theverge.com/rss/index.xml',                  cat:['investment','technology'] },
+  { id:'retail-dive',        name:'Retail Dive',               url:'https://www.retaildive.com/feeds/news/',                  cat:['expansion','corporate'] },
+  { id:'wwd',                name:'WWD',                       url:'https://wwd.com/feed/',                                   cat:['marketing','fashion-luxury'] },
+  { id:'business-insider',   name:'Business Insider',          url:'https://feeds.businessinsider.com/custom/all',            cat:['headlines','executive'] },
+];
+
+// ─── Section config ────────────────────────────────────────────────────────
+const SECTIONS = {
+  headlines:  { title:"Today's Global Brand Headlines",        sub:'The top brand stories from around the world.' },
+  corporate:  { title:'Major Corporate Announcements',          sub:'Deals, appointments, mergers, restructurings and partnerships.' },
+  investment: { title:'Investment & Technology Highlights',     sub:'Capital flows, funding rounds, AI and digital transformation.' },
+  marketing:  { title:'Marketing & Campaign News',             sub:'Brand campaigns, product launches, collaborations and creative strategies.' },
+  expansion:  { title:'International Expansion',               sub:'New markets, store openings, global retail and cross-border growth.' },
+  financial:  { title:'Brand Financial Results',               sub:'Earnings, revenue, margins and quarterly guidance.' },
+  executive:  { title:'Executive Strategic Insights',          sub:'CEO commentary, strategic vision and leadership perspectives.' },
+};
+
+const CAT_KEYWORDS = {
+  corporate:  ['acqui','merger','takeover','appoint','ceo','board','restructur','spin-off','partnership','joint venture'],
+  investment: ['invest','fund','vc','ipo','valuation','private equity','raise','funding','ai','artificial intelligence','tech','digital','ecommerce'],
+  marketing:  ['campaign','brand','advertis','collaborat','launch','collection','fashion','beauty','luxury','ambassador','influencer','sponsor'],
+  expansion:  ['expand','expansion','open','store','market','international','global','china','asia','europe','retail','outlet'],
+  financial:  ['revenue','profit','loss','earnings','quarter','annual','result','sales','margin','ebit','guidance','forecast','dividend'],
+  executive:  ['strategy','strategic','ceo','chief','executive','leader','vision','interview','outlook','plan'],
+};
+
+// ─── State ─────────────────────────────────────────────────────────────────
+const S = {
+  view:'home', section:'headlines',
+  articles:[{"id":"aHR0cHM6Ly93d3cuZWNvbm9t","title":"Elon Musk is betting his business empire on AI","summary":"The fates of xAI, SpaceX and Tesla are increasingly intertwined","url":"https://www.economist.com/business/2026/02/04/elon-musk-is-betting-his-business-empire-on-ai","source":"The Economist — Business","sourceId":"economist-business","pubDate":"2026-02-04T22:24:39.000Z","retrievedAt":"2026-10-14T21:58:35.088Z","categories":["headlines","investment"],"matchedBrands":[{"brandId":"tesla","brandName":"Tesla","parent":"Tesla Inc.","industry":"automotive","industryLabel":"Automotive"}],"isReal":true},{"id":"aHR0cHM6Ly90ZWNoY3J1bmNo","title":"Hiyd is a health tracker that attaches to the watch you already wear","summary":"Former Apple engineers figured out how to get a biometric sensor to attach to your watch without any magnets or adhesives.","url":"https://techcrunch.com/2026/10/14/hiyd-is-a-health-tracker-that-attaches-to-the-watch-you-already-wear/","source":"TechCrunch","sourceId":"techcrunch","pubDate":"2026-10-14T19:00:00.000Z","retrievedAt":"2026-10-14T21:58:32.784Z","categories":["headlines"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d2QuY29tL2Zv","title":"Vans Is Now Selling Its Sneakers at Zara","summary":"Three versions of the Vans Authentic sneaker are featured on the retailer's e-commerce platforms.","url":"https://wwd.com/footwear-news/shoe-industry-news/vans-zara-retail-partnership-details-authentic-sneakers-1239347869/","source":"WWD — Fashion Business","sourceId":"wwd","pubDate":"2026-10-14T20:26:48.000Z","retrievedAt":"2026-10-14T21:58:34.905Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"zara","brandName":"Zara / Inditex","parent":"Inditex","industry":"fashion-luxury","industryLabel":"Fashion & Luxury"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"Nvidia, worth $5.5tn, donates $250m to UK for AI safety research","summary":"Pledge spanning five years from world’s most valuable firm comes as concerns about AI agents have risen\n\nThe $5.5tn (£4.1tn) US chipmaker Nvidia is donating $250m worth of computing power to the UK to support AI safety research.\nThe donation from the world’s most valuable company comes as the UK government confirmed its AI Security Institute (AISI), which tests advance AI models, will be able to e","url":"https://www.theguardian.com/technology/2026/oct/14/nvidia-donates-to-uk-ai-safety-research","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-14T10:10:37.000Z","retrievedAt":"2026-10-14T21:58:32.814Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"},{"brandId":"nvidia","brandName":"Nvidia","parent":"NVIDIA Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly90ZWNoY3J1bmNo","title":"Zenzap raises $44M for its AI chat app that aims to replace WhatsApp in the workplace","summary":"Zenzap is used by organizations including Starbucks and Taco Bell.","url":"https://techcrunch.com/2026/10/14/zenzap-raises-44m-for-its-ai-chat-app-that-aims-to-replace-whatsapp-in-the-workplace/","source":"TechCrunch","sourceId":"techcrunch","pubDate":"2026-10-14T15:08:00.000Z","retrievedAt":"2026-10-14T21:58:32.785Z","categories":["headlines","investment"],"matchedBrands":[{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"starbucks","brandName":"Starbucks","parent":"Starbucks Corporation","industry":"retail-consumer","industryLabel":"Retail & Consumer Goods"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuZWNvbm9t","title":"The IRS is going after America Inc’s overseas profits","summary":"Companies from Coca-Cola to Meta are in its sights","url":"https://www.economist.com/business/2026/09/03/the-irs-is-going-after-america-incs-overseas-profits","source":"The Economist — Business","sourceId":"economist-business","pubDate":"2026-09-03T13:08:54.000Z","retrievedAt":"2026-10-14T21:58:35.064Z","categories":["headlines","financial"],"matchedBrands":[{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"coca-cola","brandName":"Coca-Cola","parent":"The Coca-Cola Company","industry":"retail-consumer","industryLabel":"Retail & Consumer Goods"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"Excluding UK from ‘Made in Europe’ law will hurt entire EU car industry, Mercedes boss warns","summary":"Ola Källenius says it will ‘weaken the industry on both sides’ ahead of act intended to counter non-EU competition \nLocking the UK out of the EU’s flagship industrial “Made in Europe” legislation would amount to a “deliberate choice” by EU leaders to “hurt” the car industry across the bloc, the head of Mercedes-Benz has said.\nSpeaking in his capacity as president of the European Automobile Manufac","url":"https://www.theguardian.com/world/2026/oct/14/uk-made-in-europe-law-hurt-carmaking-eu-mercedes-benz-boss-ola-kallenius","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-14T13:57:03.000Z","retrievedAt":"2026-10-14T21:58:32.814Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"mercedes","brandName":"Mercedes-Benz","parent":"Mercedes-Benz Group AG","industry":"automotive","industryLabel":"Automotive"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuY25iYy5j","title":"McDonald's is leaning into chicken and drinks to grow. New data shows it could be a tough task","summary":"McDonald's is targeting growth in chicken and beverages, but Consumer Edge data shows Chick-fil-A and coffee chains gaining in customer spending.","url":"https://www.cnbc.com/2026/10/12/mcdonalds-chicken-beverage-growth.html","source":"CNBC — Business","sourceId":"cnbc-business","pubDate":"2026-10-12T14:56:42.000Z","retrievedAt":"2026-10-14T21:58:32.388Z","categories":["headlines","investment"],"matchedBrands":[{"brandId":"mcdonalds","brandName":"McDonald's","parent":"McDonald's Corporation","industry":"retail-consumer","industryLabel":"Retail & Consumer Goods"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuY25iYy5j","title":"Walmart to cover some GLP-1s, inhalers and insulin for employees at no cost as it expands benefits","summary":"Walmart will offer Novo's Ozempic and Lilly's Mounjaro without charge for people with Type 2 diabetes after a new prior authorization.","url":"https://www.cnbc.com/2026/10/13/walmart-glp-1s-inhalers-insulin-employee-benefits.html","source":"CNBC — Business","sourceId":"cnbc-business","pubDate":"2026-10-13T20:29:06.000Z","retrievedAt":"2026-10-14T21:58:32.387Z","categories":["headlines","expansion"],"matchedBrands":[{"brandId":"walmart","brandName":"Walmart","parent":"Walmart Inc.","industry":"retail-consumer","industryLabel":"Retail & Consumer Goods"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"Ex-OpenAI employee accused of planting a recording device booked a one-way ticket to Saudi Arabia","summary":"OpenAI previously said it used its AI models to help identify the employee who allegedly planted a recording device.\nSamuel Boivin/NurPhoto via Getty Images\n\nA former OpenAI engineer accused of planting a recording device had one-way tickets to Saudi Arabia booked.\nFederal prosecutors disclosed Abdulrahman Alfozan's travel plans in previously sealed court documents.\nAlfozan was arrested on October","url":"https://www.businessinsider.com/openai-employee-recording-device-one-way-tickets-saudi-arabia-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T21:21:56.000Z","retrievedAt":"2026-10-14T21:58:32.913Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYmxvb21i","title":"Bank of America Slides on $1.21 Billion Fine as Chip Stocks Tumble | Closing Bell","summary":"Comprehensive cross-platform coverage of the U.S. market close on Bloomberg Television, Bloomberg Radio, and YouTube with Romaine Bostick, Carol Massar and Tim Stenovec. (Source: Bloomberg)","url":"https://www.bloomberg.com/news/videos/2026-10-14/bofa-slides-on-1-2b-fine-closing-bell-video","source":"Bloomberg — Markets","sourceId":"bloomberg-markets","pubDate":"2026-10-14T20:17:43.000Z","retrievedAt":"2026-10-14T21:58:32.693Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"5 reasons Netflix is struggling as it cuts about 1,000 staffers","summary":"Netflix co-CEO Ted Sarandos is looking to kickstart growth at the streaming giant.\nPatrick T. Fallon / AFP via Getty Images; Jakub Porzycki/NurPhoto via Getty Images\n\nNetflix shares have struggled amid slower engagement growth and intensifying competition.\nThe paid streaming leader laid off about 1,000 on Wednesday, its biggest round of cuts in years.\nHere are reasons Wall Street is uneasy about N","url":"https://www.businessinsider.com/why-netflix-is-struggling-layoffs-engagement-viewership-youtube-free-streaming-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T19:23:47.000Z","retrievedAt":"2026-10-14T21:58:32.916Z","categories":["headlines","corporate","investment","marketing","expansion","financial","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"amazon","brandName":"Amazon","parent":"Amazon.com Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d2QuY29tL2J1","title":"Barneys New York to Get New Life in Amazon Prime Video Series","summary":"The \"Bella From Barneys\" show will be based in a fictitious Beverly Hills store.","url":"https://wwd.com/business-news/retail/barneys-new-york-amazon-prime-video-series-bella-from-barneys-1239347656/","source":"WWD — Fashion Business","sourceId":"wwd","pubDate":"2026-10-14T20:51:14.000Z","retrievedAt":"2026-10-14T21:58:34.905Z","categories":["headlines","expansion"],"matchedBrands":[{"brandId":"amazon","brandName":"Amazon","parent":"Amazon.com Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuZWNvbm9t","title":"BYD is losing its spark","summary":"The Chinese EV giant is struggling to stay ahead in an industry defined by software","url":"https://www.economist.com/business/2026/06/03/byd-is-losing-its-spark","source":"The Economist — Business","sourceId":"economist-business","pubDate":"2026-06-03T16:11:58.000Z","retrievedAt":"2026-10-14T21:58:35.075Z","categories":["headlines"],"matchedBrands":[{"brandId":"byd","brandName":"BYD","parent":"BYD Company Limited","industry":"automotive","industryLabel":"Automotive"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuZWNvbm9t","title":"Samsung has staged a stunning comeback","summary":"But political trouble is brewing","url":"https://www.economist.com/business/2026/05/14/samsung-has-staged-a-stunning-comeback","source":"The Economist — Business","sourceId":"economist-business","pubDate":"2026-05-14T12:55:15.000Z","retrievedAt":"2026-10-14T21:58:35.077Z","categories":["headlines"],"matchedBrands":[{"brandId":"samsung","brandName":"Samsung","parent":"Samsung Electronics","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYmJjLmNv","title":"Phase Eight and Hobbs owner hit by cyber-attack, as H&M probes separate hack claim","summary":"TFG London has apologised to customers for disruption after it identified a \"cybersecurity incident\" on Sunday.","url":"https://www.bbc.co.uk/news/articles/cwly38gjkejko?at_medium=RSS&at_campaign=rss","source":"BBC News — Business","sourceId":"bbc-business","pubDate":"2026-10-13T09:34:43.000Z","retrievedAt":"2026-10-14T21:58:32.326Z","categories":["headlines","investment"],"matchedBrands":[{"brandId":"hm","brandName":"H&M Group","parent":"Hennes & Mauritz","industry":"fashion-luxury","industryLabel":"Fashion & Luxury"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"Companies rushed in on AI. Now some are pulling back","summary":"Rapid AI adoption left workers cleaning up a flood of errors and low-quality work\nEmployers around the globe are grappling with the fallout from rushing to adopt fast-changing artificial intelligence tools.\nMeta has scaled back plans to axe staff and use more AI agents after the company found employees were spending more and more time cleaning up technical and security errors, Reuters reported. An","url":"https://www.theguardian.com/technology/2026/oct/13/ai-companies-rushed-workers-fallout","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-13T15:00:00.000Z","retrievedAt":"2026-10-14T21:58:32.818Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"unilever","brandName":"Unilever","parent":"Unilever PLC","industry":"beauty","industryLabel":"Beauty"},{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Eight states sue OpenAI, saying ChatGPT isn&#8217;t safe for kids","summary":"OpenAI is facing a new wave of lawsuits from eight US states that accuse the company of harming children and misleading customers about the safety of ChatGPT, as reported earlier by Reuters. The lawsuits, filed separately by Iowa, Kansas, Nebraska, West Virginia, Arkansas, Arizona, Idaho, and Montana, allege OpenAI unlawfully put profits over safety when developing ChatGPT.\nThe string of complaint","url":"https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T21:11:28.000Z","retrievedAt":"2026-10-14T21:58:32.798Z","categories":["headlines","investment","expansion","financial"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuZm9yYmVz","title":"Michael Dell’s Net Worth Falls Over $20 Billion, Losing World’s Fourth-Richest Person Status","summary":"Google co-founder Sergey Brin’s wealth surpassed Dell’s on Wednesday afternoon.","url":"https://www.forbes.com/sites/zacharyfolk/2026/10/14/michael-dells-net-worth-falls-over-20-billion-losing-worlds-fourth-richest-person-status/","source":"Forbes — Business","sourceId":"forbes-business","pubDate":"2026-10-14T20:04:12.000Z","retrievedAt":"2026-10-14T21:58:35.002Z","categories":["headlines"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Microsoft and Japan took down a cybercrime network behind over a billion scam messages","summary":"We've all gotten a scam text about a nonexistent parking ticket or a fake package delivery, but hopefully you'll start seeing fewer of them. Microsoft says it helped dismantle a marketplace for scammers sending phishing messages like those around the world. Through an investigation with Japan's National Police Agency, it tracked scam activity back to a marketplace called YAM Store and a pair of ph","url":"https://www.theverge.com/tech/1011487/microsoft-scam-messages-marketplace-takedown","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T20:03:43.000Z","retrievedAt":"2026-10-14T21:58:32.798Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"From Substack to YouTube, here are the social platforms cracking down on AI slop","summary":"Companies running social platforms are updating their guidelines on AI-generated content, especially for monetized accounts.\nMilan Surkala/Getty Images\n\nSocial platforms are updating their guidelines on AI-generated content.\nAI has been a point of tension across the creator community for years.\nHere's how social platforms are handling AI-generated content and monetization.\n\nAs tech companies race ","url":"https://www.businessinsider.com/ai-slop-substack-youtube-tiktok-pinterest-facebook-instagram-threads-2026-7","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T19:18:18.000Z","retrievedAt":"2026-10-14T21:58:32.918Z","categories":["headlines","corporate","investment","marketing","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"The AI race is back on","summary":"Last week, Anthropic and OpenAI looked like they had the AI race to themselves, pulling ahead with increasingly powerful models that left their rivals in the dust. Google seemed hopelessly far behind, while Meta, despite spending billions to revive its floundering AI ambitions, had yet to establish itself as a serious contender. Even the latest models coming out of China, impressive as they were, ","url":"https://www.theverge.com/ai-artificial-intelligence/1011311/the-ai-race-is-back-on","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T19:06:03.000Z","retrievedAt":"2026-10-14T21:58:32.798Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"},{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"OpenAI says it found a 'hidden' recording device planted in its office","summary":"OpenAI said it found a recording device \"hidden\" in one of its offices and reported the matter to the FBI.\nBloomberg/Getty Images\n\nOpenAI said the device was \"concealed in toilet paper\" and planted in one of its offices.\nThe company said it then used its own models to determine who planted the device.\nThe Department of Justice said an employee was arrested on October 9.\n\nOpenAI said it found a \"so","url":"https://www.businessinsider.com/openai-security-threats-hidden-recording-device-planted-offices-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T19:01:49.000Z","retrievedAt":"2026-10-14T21:58:32.920Z","categories":["headlines","corporate","investment","expansion","executive"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"This is the $24 gizmo the FBI says was used to bug OpenAI's offices","summary":"OpenAI's offices in San Francisco. Authorities say an OpenAI employee installed a recording device in an executive office.\nSmith Collection/Gado/Getty Images\n\nThe device the FBI says an employee used to bug OpenAI's office isn't exactly state-of-the-art.\nYou can buy the model for $24 on Amazon or even less from its Chinese manufacturer.\nChatGPT can help hone its surreptitious recording ability.\n\nG","url":"https://www.businessinsider.com/openai-office-bugging-device-ai-seeed-studio-xiao-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T19:01:41.000Z","retrievedAt":"2026-10-14T21:58:32.920Z","categories":["headlines","investment","marketing","expansion","financial","executive"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"},{"brandId":"amazon","brandName":"Amazon","parent":"Amazon.com Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"As a TV enthusiast, I was hoping for more from the Apple TV 4K","summary":"The new Apple TV 4K and remote look just like the old ones and mostly have the same features.\t\n\nIt's been four long years since the last Apple TV 4K was released, and in that time there have been lots of hopes and dreams for features in whatever comes next. A new chip, 4K/120Hz support, audio passthrough, a remote locator, better home control integration - the 2022 Apple TV 4K is a great box, but ","url":"https://www.theverge.com/tech/1011324/apple-tv-4k-missed-features","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T18:38:59.000Z","retrievedAt":"2026-10-14T21:58:32.799Z","categories":["headlines"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"OpenAI says it's 'very concerned' that its trade secrets could help Apple's push into AI-enabled devices","summary":"OpenAI alleged that a former employee briefed top Apple executives about the products its developing.\nSamuel Boivin/NurPhoto via Getty Images\n\nOpenAI alleges that a former employee took information about an unreleased device to Apple.\nIn a legal filing, OpenAI said it is \"very concerned\" that the information could help Apple's upcoming products.\nOn Tuesday, Apple announced a family of AI-enabled s","url":"https://www.businessinsider.com/openai-apple-trade-secrets-ai-devices-homeview-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T18:31:30.000Z","retrievedAt":"2026-10-14T21:58:32.922Z","categories":["headlines","investment","marketing","expansion","executive"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly90ZWNoY3J1bmNo","title":"YouTube Music launches new labels as AI-generated music floods streaming platforms","summary":"The label will appear on the player page and include songs entirely generated by AI or partially, such as AI involved in composition and vocals.","url":"https://techcrunch.com/2026/10/14/youtube-music-launches-new-labels-as-ai-generated-music-floods-streaming-platforms/","source":"TechCrunch","sourceId":"techcrunch","pubDate":"2026-10-14T18:23:46.000Z","retrievedAt":"2026-10-14T21:58:32.784Z","categories":["headlines","investment","marketing"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"YouTube sticks new labels on AI-generated songs","summary":"YouTube is adding a \"Made with AI\" label to tracks that were \"altered or fully generated\" using AI, with a similar approach to its existing process for applying AI labels to videos. It doesn't sound like this will apply to any and all use of AI tools in making music, but according to YouTube, it includes things like \"using a generative model to create the composition and vocals.\" In its rules for ","url":"https://www.theverge.com/ai-artificial-intelligence/1011369/youtube-music-ai-label","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T18:22:56.000Z","retrievedAt":"2026-10-14T21:58:32.799Z","categories":["headlines","investment"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Save up to 20 percent on gift cards for REI, Barnes &#038; Noble, and more","summary":"While we cover a lot of deals on specific products, it’s rare that we find worthwhile savings on gift cards that let you save on essentially anything the store sells. However, until October 19th, you can save up to twenty percent on gift cards when you buy them through the Google Play store. There are a variety of discounts and retailers available, including 20 percent off $50 at Barnes and Noble,","url":"https://www.theverge.com/gadgets/1010749/google-play-gift-card-deal-sale","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T18:20:55.000Z","retrievedAt":"2026-10-14T21:58:32.799Z","categories":["headlines","corporate","investment","expansion"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"I paid $975 for Amtrak's business-class and then a first-class roomette on a 32-hour trip. Only one upgrade was worth it.","summary":"I took Amtrak's business class and a private roomette on a 32-hour trip in June.\nKristine Villarroel/Business Insider\n\nProlonged delays added 10 hours to my travel time during a recent New York to Chicago Amtrak trip.\nThe perks of a first-class private roomette made the trip very enjoyable despite the delays.\nI found the business-class seat to be identical to a cheaper coach ticket.\n\nI'm no strang","url":"https://www.businessinsider.com/amtrak-business-class-vs-roomette-upgrade-worth-it","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T17:43:41.000Z","retrievedAt":"2026-10-14T21:58:32.925Z","categories":["headlines","corporate","investment","expansion","financial","executive"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Apple&#8217;s new HomeView smart display is $10 cheaper at Amazon","summary":"It’s like a big Apple Watch for the home. | Image: Apple\t\n\nApple only just announced on Tuesday that its first smart display, the HomeView, will arrive on November 13th, but you can already save a couple bucks on it. Right now, you can buy the display for $289.99 ($10 off) in gray and the creamy white “starlight” colorway at Amazon. Sure, it’s a small discount, but deals on new Apple devices ahead","url":"https://www.theverge.com/gadgets/1011227/apple-homeview-smart-display-deal-sale","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T17:24:42.000Z","retrievedAt":"2026-10-14T21:58:32.800Z","categories":["headlines","corporate","investment","marketing"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"amazon","brandName":"Amazon","parent":"Amazon.com Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Sprout Pi adds Bluetooth, streaming, and USB-C to your aging iPod","summary":"There's an entire cottage industry of iPod mods out there, but Sprout Pi and Sprout Pico are two of the few full motherboard replacements that combine many of the most popular mods into a single upgrade. Both versions add Bluetooth, Wi-Fi, USB-C, a microSD card slot, FLAC playback, and more. And while cracking open an iPod will never not be intimidating, at least the Sprout doesn't require any sol","url":"https://www.theverge.com/gadgets/1011266/sprout-pi-adds-bluetooth-streaming-and-usb-c-to-your-aging-ipod","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T17:19:11.000Z","retrievedAt":"2026-10-14T21:58:32.800Z","categories":["headlines","corporate","investment","expansion"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhldmVy","title":"Anbernic’s next dual-screen handheld could replace your aging Nintendo 3DS","summary":"Anbernic shared a new video of its upcoming dual-screen handheld it announced last week showing the device playing 3DS, Xbox, and PS3 games through emulation. While competitors like Ayaneo have been making dual-screen handhelds for a few years, Anbernic only recently introduced its own dual-screen devices including the RG DS and RG DS Plus. Those handhelds are designed to be modern replacements fo","url":"https://www.theverge.com/tech/1011200/anbernic-rg-dds-dual-screen-handheld-emulator-nintendo-3ds","source":"The Verge — Tech & Business","sourceId":"theverge","pubDate":"2026-10-14T17:13:27.000Z","retrievedAt":"2026-10-14T21:58:32.800Z","categories":["headlines","investment","marketing"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYmJjLmNv","title":"Toilet paper and secret recorders: What we know about the arrest of the Saudi OpenAI engineer","summary":"Abdulrahman Alfozan had worked for the AI giant for more than a year before he was arrested by the FBI.","url":"https://www.bbc.co.uk/news/articles/cm04054ykqqqo?at_medium=RSS&at_campaign=rss","source":"BBC News — Business","sourceId":"bbc-business","pubDate":"2026-10-14T15:54:04.000Z","retrievedAt":"2026-10-14T21:58:32.324Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"Netflix has a problem layoffs can't solve","summary":"Netflix co-CEO Ted Sarandos has guided the streamer through growth concerns before. Can he pull it off again?\nBloomberg/Getty Images\n\nNetflix has responded to a slumping stock price by cutting 6% of its staff.\nThe streamer has dealt with growth concerns before and bounced back.\nThis time around could be different: Netflix's big worry isn't other streamers like HBO, but mega tech platforms like You","url":"https://www.businessinsider.com/layoffs-wont-solve-netflix-growth-and-engagement-problems-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T15:52:52.000Z","retrievedAt":"2026-10-14T21:58:32.934Z","categories":["headlines","corporate","investment","financial","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"},{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"There's only one B-2 stealth bomber on public display in the world. Here's where I saw it.","summary":"A wider look at the B-2.\nTalia Lakritz/Business Insider\n\nThe National Museum of the US Air Force in Ohio has the only permanent public exhibition of a B-2.\nB-2 planes are known for their stealth technology, long flight range, and nuclear capability.\nThe plane on display at the museum bears remnants of the ground-based testing it underwent.\n\nI never thought I'd get to see a B-2 Spirit stealth bombe","url":"https://www.businessinsider.com/b2-stealth-bomber-plane-us-air-force-museum-2025-8","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T15:52:15.000Z","retrievedAt":"2026-10-14T21:58:32.936Z","categories":["headlines","corporate","investment","marketing","executive"],"matchedBrands":[{"brandId":"apple","brandName":"Apple","parent":"Apple Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"I grew up with strict parents and a fear of bad grades. I'm raising my son differently.","summary":"The author (not pictured) said that she feared near-daily grade checks from her mother. She's choosing to do things differently with her son.\nPressmaster/Getty Images\n\nI grew up with near-daily grade checks and believed anything less than perfection meant I had failed.\nIt took me nearly 30 years to let go of the perfectionism I learned as a teen.\nWhen I check my son's grades, I make sure to focus ","url":"https://www.businessinsider.com/parenting-raised-to-fear-failure-school-grades-breaking-cycle-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T15:48:01.000Z","retrievedAt":"2026-10-14T21:58:32.937Z","categories":["headlines","investment","financial"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYnVzaW5l","title":"What we learned from watching the Kelly Clarkson toy store security cam footage — and one question we still have","summary":"Security footage shows Kelly Clarkson browsing inside Brooklyn toy store Art of Play during the visit that sparked her public dispute with the business. The video has no audio.\n: Weiss Eubanks/NBCUniversal via Getty Images\n\nVideo has emerged of Kelly Clarkson's viral attempt to buy an animatronic bird in a Brooklyn toy store.\nIt sheds more light on the incident, which has made global headlines, bu","url":"https://www.businessinsider.com/kelly-clarkson-toy-store-cctv-what-it-shows-and-doesnt-2026-10","source":"Business Insider","sourceId":"business-insider","pubDate":"2026-10-14T15:30:15.000Z","retrievedAt":"2026-10-14T21:58:32.938Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"Netflix to lay off about 1,000 employees in biggest cuts since 2022","summary":"Streaming company faces ⁠tough competition for viewers and engagement ⁠from legacy rivals ​and YouTube\nNetflix is laying off 6% of its workforce, ⁠or roughly 1,000 employees, in its biggest cuts since 2022, according to an internal memo seen by Reuters, as the streaming pioneer faces ⁠tough competition for viewers ⁠from legacy rivals ​and YouTube.\nThe bulk of the job cuts would be in Netflix’s pro","url":"https://www.theguardian.com/media/2026/oct/14/netflix-job-layoffs-streaming","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-14T15:10:45.000Z","retrievedAt":"2026-10-14T21:58:32.812Z","categories":["headlines","corporate","investment","executive"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuZnQuY29t","title":"He linked Saudi Arabia to Silicon Valley. Then OpenAI found a bug wrapped in toilet paper","summary":"Arrest of computer engineer Abdulrahman Alfozan has shocked tech figures in Saudi Arabia, where he is deeply connected","url":"https://www.ft.com/content/b71e0dc4-b190-49ec-b000-bd585054ddc8?syn-25a6b1a6=1","source":"Financial Times — Companies","sourceId":"ft-companies","pubDate":"2026-10-14T14:40:47.000Z","retrievedAt":"2026-10-14T21:58:32.338Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"AI overlords say they want to democratise their technology. Here’s how | Richard Wilson and Clara Long","summary":"A fight over a datacentre in Utah has been a testing ground for citizens’ assemblies, paving the way to oversight\nWhat’s your “(p)doom” – the percentage chance that rogue AI will create an existential catastrophe? Judging by their recent warnings, it is rising among tech bosses.\nOn 25 September, OpenAI paused training of its latest frontier models as reports of AI agents going rogue mounted. A day","url":"https://www.theguardian.com/commentisfree/2026/oct/14/ai-overlords-democratise-technology","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-14T10:00:03.000Z","retrievedAt":"2026-10-14T21:58:32.816Z","categories":["headlines","corporate","investment","expansion","executive"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"John Healey ‘targets tax crackdown on online marketplaces’ in first budget","summary":"Move aimed at firms such as Amazon and eBay could raise up to £1bn more for Treasury, says report\nA tax crackdown on online marketplaces such as Amazon and eBay that could raise up to £1bn more for the Treasury is reportedly being drawn up for John Healey’s first budget.\nThe chancellor is said to be preparing to announce that online marketplaces will be made responsible for collecting tax owed by ","url":"https://www.theguardian.com/business/2026/oct/14/john-healey-tax-crackdown-online-marketplaces-amazon-ebay-budget","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-14T07:42:48.000Z","retrievedAt":"2026-10-14T21:58:32.814Z","categories":["headlines","investment","expansion"],"matchedBrands":[{"brandId":"amazon","brandName":"Amazon","parent":"Amazon.com Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYmJjLmNv","title":"Saudi employee charged with planting recording device in OpenAI office","summary":"Prosecutors say the device, wrapped in toilet paper, was found inserted in a USB port on the back of a TV in an executive conference room.","url":"https://www.bbc.co.uk/news/articles/cwg5jq4vlddzo?at_medium=RSS&at_campaign=rss","source":"BBC News — Business","sourceId":"bbc-business","pubDate":"2026-10-13T21:42:49.000Z","retrievedAt":"2026-10-14T21:58:32.325Z","categories":["headlines","investment","expansion","executive"],"matchedBrands":[{"brandId":"microsoft","brandName":"Microsoft","parent":"Microsoft Corporation","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cuYmJjLmNv","title":"The Sabrina Carpenter clip that helped a 22-year-old make £120,000 a year","summary":"Social media \"clippers\" make short, vertical videos that appear on the likes of Instagram and TikTok.","url":"https://www.bbc.co.uk/news/articles/c84g12v3lk20o?at_medium=RSS&at_campaign=rss","source":"BBC News — Business","sourceId":"bbc-business","pubDate":"2026-10-13T15:12:38.000Z","retrievedAt":"2026-10-14T21:58:32.326Z","categories":["headlines"],"matchedBrands":[{"brandId":"meta","brandName":"Meta","parent":"Meta Platforms Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true},{"id":"aHR0cHM6Ly93d3cudGhlZ3Vh","title":"Trump rewards Putin and betrays Ukraine with Russia diesel deal - The Latest","summary":"Donald Trump’s deal to buy Russian diesel has been met with fury from Volodymyr Zelenskyy, who said it was ‘a weak decision’ and would generate ‘billions’ in extra revenue for Putin’s war effort. The Ukrainian president has also rejected US calls for an ‘energy ceasefire’, which would require Kyiv to stop striking oil refineries, saying Moscow must first end its attacks on energy infrastructure. L","url":"https://www.theguardian.com/news/video/2026/oct/12/trump-rewards-putin-and-betrays-ukraine-with-russia-diesel-deal-the-latest","source":"The Guardian — Business","sourceId":"guardian-business","pubDate":"2026-10-12T17:14:59.000Z","retrievedAt":"2026-10-14T21:58:32.824Z","categories":["headlines","corporate","investment","expansion","financial"],"matchedBrands":[{"brandId":"google","brandName":"Google","parent":"Alphabet Inc.","industry":"technology","industryLabel":"Technology"}],"isReal":true}], feedStatuses:[],
+  fetchedAt:null, filterIndustry:'', filterDate:'',
+  activeBrandId:null, searchQuery:'',
+};
+
+// ─── DOM ───────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+
+// ─── Helpers ───────────────────────────────────────────────────────────────
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function trunc(t,n){ t=String(t||''); return t.length<=n?t:t.slice(0,n).trimEnd()+'…'; }
+function show(el){ if(el) el.hidden=false; }
+function hide(el){ if(el) el.hidden=true; }
+
+function relDate(iso){
+  if(!iso) return '';
+  try{
+    const d=new Date(iso), now=Date.now(), diff=now-d;
+    if(isNaN(d)) return '';
+    const m=Math.floor(diff/60000);
+    if(m<1) return 'Just now';
+    if(m<60) return m+'m ago';
+    const h=Math.floor(m/60);
+    if(h<24) return h+'h ago';
+    const days=Math.floor(h/24);
+    if(days<7) return days+'d ago';
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  }catch{ return ''; }
+}
+
+function fullDate(iso){
+  if(!iso) return '';
+  try{ return new Date(iso).toLocaleString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+  catch{ return iso; }
+}
+
+function matchBrands(text){
+  const lower = text.toLowerCase();
+  const found = new Map();
+  for(const [term, brands] of BRAND_INDEX){
+    const re = new RegExp('(?:^|[\\s,.(\'\"\\-])'+term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'(?:[\\s,.(\'\"\\-]|$)','i');
+    if(re.test(lower)){
+      for(const b of brands){ if(!found.has(b.brandId)) found.set(b.brandId,b); }
+    }
+  }
+  return [...found.values()];
+}
+
+function categorise(title, desc){
+  const t = (title+' '+desc).toLowerCase();
+  const cats = new Set(['headlines']);
+  for(const [cat,kws] of Object.entries(CAT_KEYWORDS)){
+    for(const kw of kws){ if(t.includes(kw)){ cats.add(cat); break; } }
+  }
+  return [...cats];
+}
+
+function dedup(arts){
+  const seen=new Set();
+  return arts.filter(a=>{
+    const norm=a.title.toLowerCase().replace(/[^\w\s]/g,'').replace(/\s+/g,' ').trim().slice(0,80);
+    if(seen.has(norm)) return false;
+    seen.add(norm); return true;
+  });
+}
+
+function filterByDate(arts, f){
+  if(!f) return arts;
+  const limits={'24h':86400000,'48h':172800000,'7d':604800000,'30d':2592000000};
+  const ms=limits[f]; if(!ms) return arts;
+  const now=Date.now();
+  return arts.filter(a=>a.pubDate && (now-new Date(a.pubDate).getTime())<=ms);
+}
+
+function filterByIndustry(arts, ind){
+  if(!ind) return arts;
+  return arts.filter(a=>a.matchedBrands.some(b=>b.industry===ind));
+}
+
+// ─── RSS fetching via rss2json ─────────────────────────────────────────────
+async function fetchFeed(feed){
+  const url = RSS2JSON + encodeURIComponent(feed.url) + '&count=20';
+  try{
+    const res = await fetch(url, {signal: AbortSignal.timeout(12000)});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    if(data.status !== 'ok') throw new Error(data.message || 'Feed error');
+    const articles = (data.items||[]).map(item=>{
+      const title   = (item.title||'').trim();
+      const summary = (item.description||item.content||'').replace(/<[^>]*>/g,'').trim().slice(0,400);
+      const link    = item.link || item.guid || '';
+      const pubDate = item.pubDate ? new Date(item.pubDate).toISOString() : null;
+      if(!title || !link) return null;
+      const text = title+' '+summary;
+      return {
+        id: btoa(link).slice(0,22).replace(/[^a-zA-Z0-9]/g,''),
+        title, summary, url: link,
+        source: feed.name, sourceId: feed.id,
+        pubDate, retrievedAt: new Date().toISOString(),
+        categories: categorise(title, summary),
+        matchedBrands: matchBrands(text),
+        isReal: true,
+      };
+    }).filter(Boolean);
+    return { success:true, feedId:feed.id, count:articles.length, articles };
+  }catch(e){
+    return { success:false, feedId:feed.id, count:0, articles:[], error:e.message };
+  }
+}
+
+async function fetchAllFeeds(forceRefresh=false){
+  setStatus('loading');
+  $('refresh-btn').disabled=true;
+
+  // 1. Try local backend first for instant 500+ article retrieval
+  try {
+    const apiRes = await fetch('http://localhost:3000/api/news' + (forceRefresh ? '?refresh=true' : ''), { signal: AbortSignal.timeout(4000) });
+    if (apiRes.ok) {
+      const data = await apiRes.json();
+      if (data.success && data.articles && data.articles.length) {
+        S.articles = data.articles;
+        S.feedStatuses = data.feedStatuses || [];
+        S.fetchedAt = data.fetchedAt;
+        setStatus('ok');
+        $('refresh-btn').disabled=false;
+        if($('footer-time')) $('footer-time').textContent='Data last fetched: '+fullDate(S.fetchedAt)+'.';
+        return S.articles;
+      }
+    }
+  } catch(localErr) {
+    console.log('Local API not active or unreachable; using live RSS proxy fallback.');
+  }
+
+  // 2. Fallback: Stagger requests via rss2json
+  const results=[];
+  for(let i=0;i<FEEDS.length;i++){
+    results.push(fetchFeed(FEEDS[i]));
+    if(i<FEEDS.length-1) await new Promise(r=>setTimeout(r,350));
+  }
+  const done = await Promise.all(results);
+
+  let arts = done.flatMap(r=>r.articles);
+  arts = dedup(arts);
+  arts.sort((a,b)=>{
+    const da=a.pubDate?new Date(a.pubDate):0;
+    const db=b.pubDate?new Date(b.pubDate):0;
+    return db-da;
+  });
+
+  S.articles     = arts;
+  S.feedStatuses = done.map(r=>({feedId:r.feedId,success:r.success,count:r.count,error:r.error||null}));
+  S.fetchedAt    = new Date().toISOString();
+
+  setStatus('ok');
+  $('refresh-btn').disabled=false;
+  if($('footer-time')) $('footer-time').textContent='Data last fetched: '+fullDate(S.fetchedAt)+'.';
+  return arts;
+}
+
+// ─── Status bar ────────────────────────────────────────────────────────────
+function setStatus(state){
+  const dot=$('status-dot'), txt=$('status-text');
+  dot.className='status-dot';
+  if(state==='loading'){ dot.classList.add('status-dot--loading'); txt.textContent='Updating…'; }
+  else if(state==='ok'){ dot.classList.add('status-dot--ok'); txt.textContent='Updated '+relDate(S.fetchedAt); }
+  else { dot.classList.add('status-dot--error'); txt.textContent='Update failed'; }
+}
+
+// ─── Rendering ─────────────────────────────────────────────────────────────
+function renderBrandTags(mb){
+  if(!mb||!mb.length) return '';
+  return mb.slice(0,2).map(b=>`<button class="brand-tag" data-brand-id="${esc(b.brandId)}">${esc(b.brandName)}</button>`).join('');
+}
+
+function renderCard(a, isLead=false){
+  const tags=renderBrandTags(a.matchedBrands);
+  const summary=trunc(a.summary, isLead?280:175);
+  return `<article class="article-card${isLead?' article-card--lead':''}">
+    <div class="article-card__kicker"><span class="article-card__source">${esc(a.source)}</span>${tags}</div>
+    <h3 class="article-card__headline"><a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.title)}</a></h3>
+    ${summary?`<p class="article-card__summary">${esc(summary)}</p>`:''}
+    <div class="article-card__meta">
+      <time title="${esc(fullDate(a.pubDate))}">${esc(relDate(a.pubDate))}</time>
+      <span>·</span><span class="article-card__source">${esc(a.source)}</span>
+      <a class="article-card__read-more" href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">
+        Read original <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+  </article>`;
+}
+
+function renderListItem(a){
+  const t=renderBrandTags(a.matchedBrands.slice(0,1));
+  return `<li class="article-list__item">
+    <p class="article-list__headline"><a href="${esc(a.url)}" target="_blank" rel="noopener noreferrer">${esc(a.title)}</a></p>
+    <div class="article-list__meta">${esc(a.source)}<span>·</span><time>${esc(relDate(a.pubDate))}</time>${t?'<span>·</span>'+t:''}</div>
+  </li>`;
+}
+
+function renderArticlesBlock(arts){
+  if(!arts.length) return '';
+  const lead=arts.slice(0,2), grid=arts.slice(2,8), list=arts.slice(8,24);
+  let h='';
+  if(lead.length) h+=`<div class="articles-lead">${lead.map((a,i)=>renderCard(a,i===0)).join('')}</div>`;
+  if(grid.length) h+=`<div class="articles-grid">${grid.map(a=>renderCard(a)).join('')}</div>`;
+  if(list.length) h+=`<div class="section-divider"></div><ul class="article-list">${list.map(a=>renderListItem(a)).join('')}</ul>`;
+  return h;
+}
+
+function renderFeedStatus(){
+  const feedMap={}; FEEDS.forEach(f=>{feedMap[f.id]=f.name;});
+  let h='<div class="feed-status-grid">';
+  for(const s of S.feedStatuses){
+    const name=feedMap[s.feedId]||s.feedId;
+    const dotCl=s.success?'fsd-dot--ok':'fsd-dot--error';
+    const cnt=s.success?s.count+' articles':'Failed';
+    const errTip=s.error?` title="${esc(s.error)}"`:''
+    h+=`<div class="feed-status-card"${errTip}><span class="fsd-dot ${dotCl}"></span><span class="fsd-name">${esc(name)}</span><span class="fsd-count">${esc(cnt)}</span></div>`;
+  }
+  h+='</div>';
+  return h;
+}
+
+// ─── Views ─────────────────────────────────────────────────────────────────
+function showView(name){
+  ['home','brands','brand-profile','search'].forEach(v=>{
+    const el=$('view-'+v);
+    if(el) el.hidden=(v!==name);
+  });
+  S.view=name;
+}
+
+function renderHome(){
+  hide($('state-loading')); hide($('state-error')); hide($('state-empty')); hide($('stale-banner'));
+  const cfg=SECTIONS[S.section]||SECTIONS.headlines;
+  $('section-title').textContent=cfg.title;
+  $('section-sub').textContent=cfg.sub;
+  show($('filter-bar'));
+
+  let arts=S.articles.filter(a=>a.categories.includes(S.section));
+  arts=filterByIndustry(arts,S.filterIndustry);
+  arts=filterByDate(arts,S.filterDate);
+  $('filter-count').textContent=arts.length?arts.length+' article'+(arts.length!==1?'s':''):'';
+
+  if(!arts.length){ show($('state-empty')); hide($('articles-container')); return; }
+
+  const notice=`<p class="data-notice"><span class="data-notice__dot"></span>Live articles from RSS feeds — all links go to original sources. Last updated: ${fullDate(S.fetchedAt)}.</p>`;
+  $('articles-container').innerHTML=notice+renderArticlesBlock(arts)+(S.section==='headlines'?renderFeedStatus():'');
+  show($('articles-container'));
+}
+
+function renderBrandDirectory(){
+  let h='';
+  for(const ind of BRANDS_DATA.industries){
+    h+=`<section class="brand-industry-section">
+      <h3 class="brand-industry-section__title">${ind.icon} ${esc(ind.label)}</h3>
+      <div class="brand-grid">`;
+    for(const b of ind.brands){
+      const ticker=b.ticker?`<span class="brand-card__ticker">${esc(b.ticker)}</span>`:'';
+      h+=`<button class="brand-card" data-brand-id="${esc(b.id)}">
+        <div class="brand-card__name">${esc(b.name)}</div>
+        <div class="brand-card__parent">${esc(b.parent)}</div>
+        <div class="brand-card__meta"><span class="brand-card__country">${esc(b.country)}</span>${ticker}</div>
+      </button>`;
+    }
+    h+=`</div></section>`;
+  }
+  $('brand-directory').innerHTML=h;
+}
+
+function renderBrandProfile(brandId){
+  let brand=null,industry=null;
+  for(const ind of BRANDS_DATA.industries){
+    const f=ind.brands.find(b=>b.id===brandId);
+    if(f){brand=f;industry=ind;break;}
+  }
+  if(!brand){ showView('brands'); return; }
+
+  const arts=S.articles.filter(a=>a.matchedBrands.some(b=>b.brandId===brandId));
+  const ticker=brand.ticker?`<span class="brand-profile__chip">Ticker: ${esc(brand.ticker)}</span>`:'';
+  const ws=brand.website?`<a class="btn btn--ghost btn--sm" href="${esc(brand.website)}" target="_blank" rel="noopener noreferrer">Official website ↗</a>`:'';
+
+  let h=`<div class="brand-profile__header">
+    <div>
+      <h2 class="brand-profile__name">${esc(brand.name)}</h2>
+      <p class="brand-profile__parent">${esc(brand.parent)}</p>
+      <div class="brand-profile__chips">
+        <span class="brand-profile__chip">${esc(industry.label)}</span>
+        <span class="brand-profile__chip">${esc(brand.country)}</span>
+        ${ticker}
+      </div>
+    </div>
+    <div class="brand-profile__actions">
+      ${ws}
+      <button class="btn btn--ghost btn--sm" id="back-btn">← Directory</button>
+    </div>
+  </div>`;
+
+  if(!arts.length){
+    h+=`<div class="state-panel"><p class="state-panel__msg">No recent articles found for ${esc(brand.name)}. Try refreshing.</p></div>`;
+  } else {
+    h+=`<div class="section-header"><h3 class="section-header__title">Latest News — ${esc(brand.name)}</h3><p class="section-header__sub">${arts.length} article${arts.length!==1?'s':''} from live feeds.</p></div>`;
+    h+=renderArticlesBlock(arts);
+  }
+  $('brand-profile-content').innerHTML=h;
+  $('back-btn')?.addEventListener('click',()=>{ showView('brands'); S.activeBrandId=null; });
+}
+
+function renderSearch(query){
+  const q=query.toLowerCase();
+  const arts=S.articles.filter(a=>
+    a.title.toLowerCase().includes(q)||
+    a.summary.toLowerCase().includes(q)||
+    a.matchedBrands.some(b=>b.brandName.toLowerCase().includes(q)||b.industryLabel.toLowerCase().includes(q))
+  );
+  showView('search');
+  hide($('filter-bar'));
+  setActiveNav(null,null);
+  $('search-sub').textContent=`${arts.length} result${arts.length!==1?'s':''} for "${query}"`;
+  $('search-results').innerHTML=renderArticlesBlock(arts);
+}
+
+// ─── Nav ───────────────────────────────────────────────────────────────────
+function setActiveNav(view,section){
+  document.querySelectorAll('.nav-link').forEach(el=>{
+    el.classList.remove('nav-link--active');
+    if(view==='brands'&&el.dataset.view==='brands') el.classList.add('nav-link--active');
+    else if(view==='home'&&el.dataset.section===section) el.classList.add('nav-link--active');
+  });
+}
+
+// ─── Loading orchestration ─────────────────────────────────────────────────
+let _loading=false;
+async function load(force=false){
+  if(_loading&&!force) return;
+  _loading=true;
+  hide($('state-error')); hide($('state-empty')); hide($('articles-container')); hide($('stale-banner'));
+  if(S.view==='home') show($('state-loading'));
+  try{
+    await fetchAllFeeds(force);
+    hide($('state-loading'));
+    if(S.view==='home') renderHome();
+    else if(S.view==='brand-profile') renderBrandProfile(S.activeBrandId);
+    else if(S.view==='search') renderSearch(S.searchQuery);
+  }catch(e){
+    console.error(e);
+    hide($('state-loading'));
+    $('error-msg').textContent='Error: '+e.message+'. Check your internet connection.';
+    setStatus('error');
+    if(S.view==='home'){ show($('state-error')); }
+  }finally{ _loading=false; }
+}
+
+// ─── Events ────────────────────────────────────────────────────────────────
+document.querySelectorAll('.nav-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const view=link.dataset.view, section=link.dataset.section;
+    if(view==='brands'){
+      S.view='brands'; showView('brands'); hide($('filter-bar')); setActiveNav('brands',null);
+      renderBrandDirectory();
+    } else if(section){
+      S.section=section; showView('home'); setActiveNav('home',section);
+      if(S.articles.length) renderHome(); else load();
+    }
+  });
+});
+
+$('refresh-btn').addEventListener('click',()=>load(true));
+$('stale-refresh-btn')?.addEventListener('click',()=>load(true));
+$('retry-btn')?.addEventListener('click',()=>load(false));
+$('filter-industry').addEventListener('change',()=>{ S.filterIndustry=$('filter-industry').value; renderHome(); });
+$('filter-date').addEventListener('change',()=>{ S.filterDate=$('filter-date').value; renderHome(); });
+$('filter-clear').addEventListener('click',()=>{
+  S.filterIndustry=''; S.filterDate='';
+  $('filter-industry').value=''; $('filter-date').value='';
+  renderHome();
+});
+
+$('search-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const q=$('search-input').value.trim();
+  if(q.length>=2){ S.searchQuery=q; renderSearch(q); }
+});
+
+// Delegated brand tag / card clicks
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-brand-id]');
+  if(btn){
+    const id=btn.dataset.brandId;
+    S.activeBrandId=id; showView('brand-profile'); hide($('filter-bar')); setActiveNav(null,null);
+    renderBrandProfile(id);
+  }
+});
+
+// ─── Init ─────────────────────────────────────────────────────────────────
+$('pub-date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+renderBrandDirectory();
+load();
+// Auto-refresh every 15 minutes
+setInterval(()=>load(true), 15*60*1000);
+</script>
+</body>
+</html>

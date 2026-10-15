@@ -1,0 +1,31 @@
+{
+  "_comment": "Hotspots are positioned in IMAGE pixel coordinates (image is 1024x680). x/y = top-left, w/h = size. brandId must match an id in src/data/brands.json. Edit freely; no code change needed.",
+  "image": { "src": "/images/fashion-city.jpg", "width": 1024, "height": 680 },
+  "hotspots": [
+    { "id": "hm-top-left",     "brandId": "hm",             "label": "H&M",            "x": 62,  "y": 58,  "w": 140, "h": 150 },
+    { "id": "uniqlo-left",     "brandId": "uniqlo",         "label": "UNIQLO",         "x": 8,   "y": 298, "w": 92,  "h": 78  },
+    { "id": "hm-left-red",     "brandId": "hm",             "label": "H&M",            "x": 128, "y": 418, "w": 60,  "h": 50  },
+    { "id": "adidas-left",     "brandId": "adidas",         "label": "adidas",         "x": 30,  "y": 432, "w": 76,  "h": 60  },
+    { "id": "zara-upper",      "brandId": "zara",           "label": "ZARA",           "x": 258, "y": 172, "w": 90,  "h": 42  },
+    { "id": "zara-lower",      "brandId": "zara",           "label": "ZARA",           "x": 232, "y": 403, "w": 92,  "h": 30  },
+    { "id": "adidas-lower",    "brandId": "adidas",         "label": "adidas",         "x": 212, "y": 510, "w": 42,  "h": 38  },
+    { "id": "nike-lower",      "brandId": "nike",           "label": "Nike",           "x": 322, "y": 498, "w": 52,  "h": 70  },
+
+    { "id": "zara-tower",      "brandId": "zara",           "label": "ZARA",           "x": 488, "y": 212, "w": 44,  "h": 36  },
+    { "id": "hm-tower",        "brandId": "hm",             "label": "H&M",            "x": 487, "y": 256, "w": 42,  "h": 46  },
+    { "id": "uniqlo-tower",    "brandId": "uniqlo",         "label": "UNIQLO",         "x": 489, "y": 305, "w": 40,  "h": 36  },
+    { "id": "adidas-tower",    "brandId": "adidas",         "label": "adidas",         "x": 485, "y": 353, "w": 46,  "h": 50  },
+    { "id": "nike-tower",      "brandId": "nike",           "label": "Nike",           "x": 485, "y": 406, "w": 46,  "h": 46  },
+    { "id": "mango-tower",     "brandId": "mango",          "label": "MANGO",          "x": 485, "y": 453, "w": 46,  "h": 36  },
+    { "id": "cos-tower",       "brandId": "cos",            "label": "COS",            "x": 487, "y": 490, "w": 44,  "h": 38  },
+
+    { "id": "north-face",      "brandId": "the-north-face", "label": "The North Face", "x": 765, "y": 62,  "w": 80,  "h": 95  },
+    { "id": "mango-right",     "brandId": "mango",          "label": "MANGO",          "x": 683, "y": 205, "w": 55,  "h": 75  },
+    { "id": "cos-right",       "brandId": "cos",            "label": "COS",            "x": 905, "y": 198, "w": 75,  "h": 45  },
+    { "id": "pullbear",        "brandId": "pull-and-bear",  "label": "Pull&Bear",      "x": 695, "y": 382, "w": 70,  "h": 42  },
+    { "id": "massimo-dutti",   "brandId": "massimo-dutti",  "label": "Massimo Dutti",  "x": 902, "y": 350, "w": 118, "h": 55  },
+    { "id": "bershka-centre",  "brandId": "bershka",        "label": "Bershka",        "x": 706, "y": 510, "w": 65,  "h": 34  },
+    { "id": "bershka-right",   "brandId": "bershka",        "label": "Bershka",        "x": 822, "y": 505, "w": 62,  "h": 34  },
+    { "id": "stradivarius",    "brandId": "stradivarius",   "label": "Stradivarius",   "x": 922, "y": 498, "w": 100, "h": 36  }
+  ]
+}
