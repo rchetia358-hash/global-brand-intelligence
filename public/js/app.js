@@ -651,7 +651,7 @@ async function loadNews(forceRefresh = false) {
   setStatus('loading');
   dom.refreshBtn.disabled = true;
 
-  if (State.view === 'home') {
+  if (State.view === 'home' && (!State.articles || State.articles.length === 0)) {
     showEl(dom.stateLoading);
     hideEl(dom.stateError);
     hideEl(dom.stateEmpty);
@@ -901,12 +901,18 @@ async function init() {
   await Promise.all([loadBrandsData(), loadFeedsData(), loadPressReleases()]);
   await loadNews();
 
-  // Auto-refresh every 15 minutes
+  // Auto-refresh every 3 minutes and when returning to the tab
   setInterval(() => {
     console.log('[App] Auto-refresh triggered.');
-    loadNews(true);
+    loadNews(false);
     loadPressReleases();
-  }, 15 * 60 * 1000);
+  }, 3 * 60 * 1000);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      loadNews(false);
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

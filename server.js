@@ -20,7 +20,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', time: new Date().toISOString(), version: '1.0.0' });
+  const urlFile = path.join(__dirname, 'logs', 'current-tunnel-url.txt');
+  let publicUrl = null;
+  if (fs.existsSync(urlFile)) {
+    publicUrl = fs.readFileSync(urlFile, 'utf8').trim();
+  }
+  res.json({ status: 'ok', time: new Date().toISOString(), version: '1.0.0', publicUrl });
 });
 
 // Brand news — articles for one brand published within the last N hours (default 3)
@@ -182,6 +187,16 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`   Local:   http://localhost:${PORT}`);
   console.log(`   Network: http://${localIp}:${PORT} (use this on your phone)`);
   console.log(`   Press Ctrl+C to stop.\n`);
+
+  // Initial live feed warm-up and continuous 5-minute background refresh
+  newsService.fetchAllNews({ forceRefresh: true }).catch(err => {
+    console.warn('[Server] Initial feed warm-up error:', err.message);
+  });
+  setInterval(() => {
+    newsService.fetchAllNews({ forceRefresh: true }).catch(err => {
+      console.warn('[Server] Background feed refresh error:', err.message);
+    });
+  }, 5 * 60 * 1000);
 });
 
 module.exports = app;

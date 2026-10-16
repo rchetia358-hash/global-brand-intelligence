@@ -22,8 +22,8 @@ const parser = new Parser({
   }
 });
 
-// Cache: articles for 15 minutes, brand index indefinitely until restart
-const articleCache = new NodeCache({ stdTTL: 900, checkperiod: 120 });
+// Cache: articles for 5 minutes, brand index indefinitely until restart
+const articleCache = new NodeCache({ stdTTL: 300, checkperiod: 60 });
 const BRANDS_PATH    = path.join(__dirname, 'data/brands.json');
 const FEEDS_PATH     = path.join(__dirname, 'data/feeds.json');
 const BASELINE_PATH  = path.join(__dirname, 'data/baseline-articles.json');
@@ -267,7 +267,7 @@ async function fetchAllNews({ forceRefresh = false } = {}) {
     usingBaseline: allArticles.length === 0
   };
 
-  articleCache.set(CACHE_KEY, payload);
+  articleCache.set(CACHE_KEY, payload, allArticles.length === 0 ? 15 : 300);
   console.log(`[NewsService] Fetched ${allArticles.length} live articles + ${finalArticles.length - allArticles.length} baseline from ${enabledFeeds.length} feeds.`);
   return payload;
 }
@@ -291,11 +291,8 @@ function searchArticles(articles, query) {
 }
 
 function getCacheAge() {
-  const keys = articleCache.keys();
-  if (!keys.includes('all_articles')) return null;
-  const ttl = articleCache.getTtl('all_articles');
-  if (!ttl) return null;
-  return new Date(ttl - 900_000).toISOString();
+  const cached = articleCache.get('all_articles');
+  return cached ? cached.fetchedAt : null;
 }
 
 // Non-blocking: returns the cached payload if present, otherwise null (never triggers a fetch)

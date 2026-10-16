@@ -154,7 +154,10 @@ async function getBrandNews(brandId, { hours = 3, refresh = false } = {}) {
 
   const key = `raw:${brandId}`;
   let raw = refresh ? null : rawCache.get(key);
-  if (!raw) { raw = await collectRaw(brand); rawCache.set(key, raw); }
+  if (!raw || !raw.items || raw.items.length === 0) {
+    raw = await collectRaw(brand);
+    rawCache.set(key, raw, (raw.items && raw.items.length > 0) ? 180 : 10);
+  }
 
   const sources = raw.sources.map(s => ({ ...s }));
   let items = raw.items.slice();
