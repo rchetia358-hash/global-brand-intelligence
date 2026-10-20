@@ -775,12 +775,30 @@ function setActiveNavLink(view, section) {
    EVENT LISTENERS
 ═══════════════════════════════════════════════════════════════════════════ */
 function initEvents() {
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const navList = document.getElementById('main-nav-list');
+  if (mobileToggle && navList) {
+    mobileToggle.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      navList.classList.toggle('nav-bar__sections--open', !expanded);
+    });
+  }
+
   // Nav links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
       const view    = link.dataset.view;
       const section = link.dataset.section;
+      // Allow normal navigation for links without data-view (e.g. /case-studies)
+      if (!view) return;
+      e.preventDefault();
+
+      if (mobileToggle && navList) {
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        navList.classList.remove('nav-bar__sections--open');
+      }
 
       if (view === 'brands') {
         showView('brands');
@@ -882,8 +900,19 @@ async function init() {
   });
 
   initEvents();
+
+  // Support URL query params (?section=corporate, ?view=brands, ?q=...) when returning from /case-studies
+  const params = new URLSearchParams(window.location.search);
+  const urlView = params.get('view');
+  const urlSection = params.get('section');
+  const urlQuery = params.get('q');
+
+  if (urlSection && SECTIONS[urlSection]) {
+    State.section = urlSection;
+  }
+
   showView('home');
-  setActiveNavLink('home', 'headlines');
+  setActiveNavLink('home', State.section);
 
   // Immediately render verified brand articles if available for instant 0ms load
   if (window.BASELINE_ARTICLES && Array.isArray(window.BASELINE_ARTICLES) && window.BASELINE_ARTICLES.length > 0) {
@@ -900,6 +929,16 @@ async function init() {
   // Load in parallel
   await Promise.all([loadBrandsData(), loadFeedsData(), loadPressReleases()]);
   await loadNews();
+
+  if (urlView === 'brands') {
+    showView('brands');
+    hideEl(dom.filterBar);
+    renderBrandDirectory();
+    setActiveNavLink('brands', null);
+  } else if (urlQuery && urlQuery.trim().length >= 2) {
+    if (dom.searchInput) dom.searchInput.value = urlQuery.trim();
+    doSearch(urlQuery.trim());
+  }
 
   // Auto-refresh every 3 minutes and when returning to the tab
   setInterval(() => {

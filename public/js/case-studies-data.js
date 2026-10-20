@@ -1,0 +1,25 @@
+/**
+ * Global Brand Intelligence — Case Studies Configuration
+ * Add new case study cards by appending objects to window.CASE_STUDIES.
+ */
+
+'use strict';
+
+window.CASE_STUDIES = [
+  {
+    id: 'hm-sustainability',
+    slug: '/case-studies/hm-sustainability',
+    coverImage: '/images/hm-case-study-cover.jpg',
+    coverAlt: 'Mannequins dressed in H&M sustainable fashion garments adorned with botanical foliage under gallery spotlights',
+    badge: 'MSc Dissertation · Distinction',
+    title: 'H&M Sustainability & International Market Analysis',
+    subtitle: 'International Strategy · Market Research · Brand Credibility',
+    description: 'Investigating whether H&M maintains consistent sustainability communication across the UK and Germany, and what the evidence reveals about local adaptation and credibility.',
+    tags: [
+      'UK vs Germany',
+      'Secondary research',
+      'Strategic recommendations'
+    ],
+    ctaText: 'Read case study'
+  }
+];

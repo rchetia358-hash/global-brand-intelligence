@@ -162,7 +162,26 @@ app.get('/api/status', (req, res) => {
   });
 });
 
+// Case studies config API
+app.get('/api/case-studies', (req, res) => {
+  try {
+    const file = path.join(__dirname, 'src', 'data', 'case-studies.json');
+    const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+    res.json({ success: true, caseStudies: data });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // ─── Serve frontend ────────────────────────────────────────────────────────────
+
+app.get(['/case-studies', '/case-studies/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'case-studies.html'));
+});
+
+app.get(['/case-studies/hm-sustainability', '/case-studies/hm-sustainability/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'case-study-hm.html'));
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
